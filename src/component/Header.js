@@ -37,9 +37,9 @@ const Header = () => {
       });
 }
   return (
-    <div className="flex items-center justify-between bg-gradient-to-b from-green px-6 py-4 z-10">
+    <div className="flex items-center  justify-between px-6 py-4 z-10">
       <div className="flex items-center space-x-2">
-        <img className="rounded-full w-16 h-16 border-2 border-white" src="/logo192.png" alt="logo" />
+        <img className="rounded-full w-10 h-10 border-2 border-white" src="/logo192.png" alt="logo" />
         <span className="text-lg font-bold text-[#ffdf27] ">Le Banana</span>
       </div>
       <div>
