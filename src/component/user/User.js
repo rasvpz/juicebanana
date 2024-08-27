@@ -93,7 +93,7 @@ const User = () => {
 
 
       {/* Item Spans within the Map Function */}
-      <div className="mt-4">
+      <div className="m-2">
       {filteredCategories.map((category) => (
         <div key={category.id} className="flex flex-wrap">
           {category.itemsDetails?.map((item, index) => (
