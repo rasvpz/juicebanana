@@ -99,9 +99,9 @@ const User = () => {
           {category.itemsDetails?.map((item, index) => (
             <div
                 key={index}
-                className={`bg-opacity-[.7] rounded-md p-2 mb-3 
+                className={`bg-opacity-[.7] rounded-md p-2 mb-3 w-[200px]
                 ${noOfItems[item.itemsName]?.count > 0 ? 'border border-[#61abfa] shadow-[0_0_20px_8px_rgba(96,165,250,1)]' : 'border-[#000102] shadow-[0_0_4px_2px_rgba(6,16,25,.5)]'
-                } hover:shadow-[0_0_15px_4px_rgba(96,165,250,1)] hover:border hover:border-[#61abfa] m-3 h-100 w-100 ${item.bgColor} text-gray-200`}
+                } hover:shadow-[0_0_15px_4px_rgba(96,165,250,1)] hover:border hover:border-[#61abfa] m-2 ${item.bgColor} text-gray-200`}
                 >
                 <p className={`min-w-28 text-white-300 text-right ${noOfItems[item.itemsName]?.count ? 'text-black font-semibold' : ''}`}>
                 {noOfItems[item.itemsName]?.count ? `${noOfItems[item.itemsName].count} items` : "0 items"}

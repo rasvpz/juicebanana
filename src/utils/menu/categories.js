@@ -32,12 +32,12 @@ export const categories = [
             { itemsName: "Afghani", rate:70, bgColor: "bg-[#69642e]", fgColor: "bg-[#D3B1F7]", brdr:"border-[#D3B1F7]", textColor:"text-[#312020]"},
             { itemsName: "BhoomBoom", rate:70, bgColor: "bg-red-500", fgColor: "bg-red-700", brdr:"bg-red-700", textColor:"text-[#312020]"},
             { itemsName: "Neuttela", rate:70, bgColor: "bg-[#A5743C]", fgColor: "bg-[#5d501e]", brdr:"border-[#5d501e]", textColor:"text-[#312020]"},
-            { itemsName: "HoneyCombMould", rate:70, bgColor: "bg-[#FFD700]", fgColor: "bg-yellow-500", brdr:"bg-yellow-500", textColor:"text-[#312020]"},
+            { itemsName: "HCombMould", rate:70, bgColor: "bg-[#FFD700]", fgColor: "bg-yellow-500", brdr:"bg-yellow-500", textColor:"text-[#312020]"},
             { itemsName: "Snickers", rate:70, bgColor: "bg-[#3b3b3b]", fgColor: "bg-[#84665d]", brdr:"border-[#84665d]", textColor:"text-[#312020]"},
             { itemsName: "Fig&Honey", rate:70, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#574737]", brdr:"border-[#574737]", textColor:"text-[#312020]"},
             { itemsName: "DryFruit", rate:70, bgColor: "bg-[#D3CDB0]", fgColor: "bg-[#605f56]", brdr:"border-[#605f56]", textColor:"text-[#312020]"},
             { itemsName: "SpecialNuts", rate:70, bgColor: "bg-[#2b3940]", fgColor: "bg-[#ab974d]", brdr:"border-[#ab974d]", textColor:"text-[#312020]"},
-            { itemsName: "LeBananaSpecial", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700", brdr:"border-[#ab974d]", textColor:"text-[#312020]"},
+            { itemsName: "LeBanaSpecial", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700", brdr:"border-[#ab974d]", textColor:"text-[#312020]"},
 
           ]  
     },
