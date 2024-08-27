@@ -72,7 +72,7 @@ const User = () => {
         xs:font-semibold 
         sm:font-semibold 
         lg:font-semibold 
-        m-1 px-2 py-1
+        m-1.5 px-2 py-1
         relative
         ${catId === category.id ? 
         'text-white shadow-[0_0_15px_4px_rgba(96,165,250,1)] border border-[#61abfa]' 
@@ -99,26 +99,26 @@ const User = () => {
           {category.itemsDetails?.map((item, index) => (
             <div
                 key={index}
-                className={`bg-opacity-[.9] rounded-md p-2 mb-1 
-                ${noOfItems[item.itemsName]?.count > 0 ? 'border border-[#61abfa] shadow-[0_0_20px_8px_rgba(96,165,250,1)]' : ''
-                } hover:shadow-[0_0_15px_4px_rgba(96,165,250,1)] hover:border hover:border-[#61abfa] m-2 h-100 w-100 ${item.bgColor} text-gray-200`}
+                className={`bg-opacity-[.7] rounded-md p-2 mb-3 
+                ${noOfItems[item.itemsName]?.count > 0 ? 'border border-[#61abfa] shadow-[0_0_20px_8px_rgba(96,165,250,1)]' : 'border-[#000102] shadow-[0_0_4px_2px_rgba(6,16,25,.5)]'
+                } hover:shadow-[0_0_15px_4px_rgba(96,165,250,1)] hover:border hover:border-[#61abfa] m-3 h-100 w-100 ${item.bgColor} text-gray-200`}
                 >
                 <p className={`min-w-28 text-white-300 text-right ${noOfItems[item.itemsName]?.count ? 'text-black font-semibold' : ''}`}>
-                {noOfItems[item.itemsName]?.count ? `${noOfItems[item.itemsName].count} items` : "0 Items"}
+                {noOfItems[item.itemsName]?.count ? `${noOfItems[item.itemsName].count} items` : "0 items"}
                 </p>
             <span className='text-3xl text-white drop-shadow-[0px_2px_2px_rgba(0,0,0,0.7)]'>
                 {item.itemsName}
               </span>
-              <div className='flex justify-between items-center mt-4 mb-2'>
+              <div className='flex justify-between items-center mt-2 mb-1'>
                 <span
                   onClick={() => handleDecrement(item.itemsName, item.rate)}
-                  className={`cursor-pointer ${item.textColor} border-2 ${item.brdr} rounded-full px-3 py-1 text-2xl`}
+                  className={`cursor-pointer ${item.textColor} border-2 ${item.brdr} rounded-full px-3 text-2xl`}
                 >
                   -
                 </span>
                 <span
                   onClick={() => handleIncrement(item.itemsName, item.rate)}
-                  className={`border-2 ${item.brdr} cursor-pointer text-white rounded-full px-2.5 py-1 ${item.fgColor} ${item.brdr} text-2xl`}
+                  className={`border-2 ${item.brdr} cursor-pointer text-white rounded-full px-2  ${item.fgColor} ${item.brdr} text-2xl`}
                 >
                   +
                 </span>
