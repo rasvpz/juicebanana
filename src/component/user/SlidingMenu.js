@@ -1,0 +1,135 @@
+import React, { useState, useEffect } from 'react';
+
+const SlidingMenu = ({ filteredItems, noOfItems }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [totalValue, setTotalValue] = useState(0);
+  
+  const printTable = () => {
+    const printWindow = window.open('', '', 'height=600,width=800');
+    const tableHTML = `
+      <html>
+        <head>
+          <title>Print</title>
+          <style>
+            table {
+              width: 100%;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 8px;
+              text-align: left;
+              border: 1px solid #ddd;
+            }
+            th {
+              background-color: #f4f4f4;
+            }
+            tbody tr:nth-child(even) {
+              background-color: #f9f9f9;
+            }
+          </style>
+        </head>
+        <body>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Amnt</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filteredItems?.map((key, idx) => `
+                <tr>
+                  <td>${idx + 1}</td>
+                  <td>${key}</td>
+                  <td>${noOfItems[key]?.count || 0}</td>
+                  <td>${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `;
+    
+    printWindow.document.open();
+    printWindow.document.write(tableHTML);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  };
+  
+  // Toggle the menu
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Compute total value whenever filteredItems or noOfItems changes
+  useEffect(() => {
+    const total = filteredItems?.reduce((acc, key) => {
+      const count = noOfItems[key]?.count || 0;
+      const rate = noOfItems[key]?.rate || 0;
+      return acc + (count * rate);
+    }, 0);
+
+    setTotalValue(total);
+  }, [filteredItems, noOfItems]); // Recalculate when these dependencies change
+
+  return (
+    <div>
+      {/* Toggle Button */}
+      <button
+        className="fixed top-96 right-[-8px] z-50 bg-yellow-400 text-black px-4 py-2 rounded-md"
+        onClick={toggleMenu}
+      >
+        {isOpen ? 'C' : 'O'}
+      </button>
+
+      {/* Sliding Menu */}
+      <div
+        className={`fixed top-0 right-0 h-full w-auto bg-gray-800 text-white p-4 transform transition-transform duration-300 ease-in-out z-20
+        ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        onClick={(e) => e.stopPropagation()} // Prevent click event from propagating
+      >
+        <h2 className="text-xl font-semibold mb-4">Order</h2>
+        <table className="table-auto w-full border-collapse border-2 border-gray-700 text-white">
+          <thead>
+            <tr className="bg-gray-800">
+              <th className="py-2 px-4 text-left">No</th>
+              <th className="py-2 px-4 text-left">Item</th>
+              <th className="py-2 px-4 text-left">Qty</th>
+              <th className="py-2 px-4 text-left">Amnt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredItems?.map((key, idx) => (
+              <tr key={key} className="odd:bg-gray-700 border border-gray-500 even:bg-gray-800 hover:bg-gray-600">
+                <td className="py-1 px-4">{idx + 1}</td>
+                <td className="py-1 px-4">{key}</td>
+                <td align='right' className="py-1 px-4">{noOfItems[key]?.count || 0}</td>
+                <td align='right' className="py-1 px-4">{(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</td>
+              </tr>
+            ))}
+            <tr className="odd:bg-gray-700 even:bg-gray-800 hover:bg-gray-600">
+              <td className="py-2 px-4"><button className='bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"'>SAVE</button></td>
+              <td className="py-2 px-4"><button onClick={printTable} className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"'>PRINT/SAVE</button></td>
+              <td className="py-2 px-4 font-bold">Total</td>
+              <td align='right' className="py-2 px-4 font-bold">{totalValue}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-10"
+          onClick={toggleMenu}
+        ></div>
+      )}
+    </div>
+  );
+};
+
+export default SlidingMenu;

@@ -5,12 +5,12 @@ export const categories = [
         bg: "bg-[#007BFF]",
         fg: "text-black-600",
         itemsDetails: [
-            { itemsName: "Pinapple", bgColor: "bg-yellow-500", fgColor: "bg-yellow-800", brdr:"border-yellow-600", textColor:"text-yellow-800"},
-            { itemsName: "WaterMelon", bgColor: "bg-red-500", fgColor: "bg-red-800", brdr:"border-red-600", textColor:"text-red-800"},
-            { itemsName: "ButterSchotch", bgColor: "bg-red-300", fgColor: "bg-red-600", brdr:"border-red-400", textColor:"text-red-800"},
-            { itemsName: "Mango", bgColor: "bg-orange-500", fgColor: "bg-orange-800", brdr:"border-orange-600", textColor:"text-orange-800"},
-            { itemsName: "Rose", bgColor: "bg-pink-500", fgColor: "bg-pink-800", brdr:"border-pink-600", textColor:"text-pink-800"},
-            { itemsName: "ColdCoffe", bgColor: "bg-[#6f4747]", fgColor: "bg-[#312020]", brdr:"border-[#312020]", textColor:"text-[#312020]"},
+            { itemsName: "Pinapple", rate:40, bgColor: "bg-yellow-500", fgColor: "bg-yellow-800", brdr:"border-yellow-600", textColor:"text-yellow-800"},
+            { itemsName: "WaterMelon", rate:60, bgColor: "bg-red-500", fgColor: "bg-red-800", brdr:"border-red-600", textColor:"text-red-800"},
+            { itemsName: "Rose", rate:70, bgColor: "bg-pink-500", fgColor: "bg-pink-800", brdr:"border-pink-600", textColor:"text-pink-800"},
+            { itemsName: "ButterSchotch", rate:80, bgColor: "bg-red-300", fgColor: "bg-red-600", brdr:"border-red-400", textColor:"text-red-800"},
+            { itemsName: "Mango", rate:90, bgColor: "bg-orange-500", fgColor: "bg-orange-800", brdr:"border-orange-600", textColor:"text-orange-800"},
+            { itemsName: "ColdCoffe", rate:120, bgColor: "bg-[#6f4747]", fgColor: "bg-[#312020]", brdr:"border-[#312020]", textColor:"text-[#312020]"},
 
           ]
     },
@@ -20,12 +20,12 @@ export const categories = [
         bg: "bg-[#007BFF]",
         fg: "text-black-600",
         itemsDetails: [
-            { itemsName: "a", bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
-            { itemsName: "b", bgColor: "bg-red-500", fgColor: "bg-red-700" },
-            { itemsName: "c", bgColor: "bg-red-300", fgColor: "bg-red-700" },
-            { itemsName: "d", bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
-            { itemsName: "e", bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
-            { itemsName: "f", bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { itemsName: "a", rate:40, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { itemsName: "b", rate:60, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { itemsName: "c", rate:70, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { itemsName: "d", rate:80, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { itemsName: "e", rate:90, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { itemsName: "f", rate:120, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
 
           ]
     },
