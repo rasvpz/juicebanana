@@ -4,7 +4,7 @@ import SlidingMenu from './SlidingMenu';
 
 const User = () => {
     const [cateName, setCateName] = useState('Avil Milk')
-    const [noOfItems, setNoOfItems] = useState(false)
+    const [noOfItems, setNoOfItems] = useState('')
     const [catId, setCatId] = useState(1)
     // const [itemRate, setItemRate] = useState(0)
     // const [itemCounts, setItemCounts] = useState({});
@@ -22,16 +22,7 @@ const User = () => {
         }));
       };
       
-  
-    // Handle decrement
-    // const handleDecrement = (itemName, rate) => {
-    //   setNoOfItems((prevCounts) => ({
-    //     ...prevCounts,
-    //     [itemName]: prevCounts[itemName] > 0 ? prevCounts[itemName] - 1 : 0,
-    //   }));
-    // };
-
-    const handleDecrement = (itemName) => {
+     const handleDecrement = (itemName) => {
         setNoOfItems((prevCounts) => ({
           ...prevCounts,
           [itemName]: {
@@ -103,12 +94,25 @@ const User = () => {
                 ${noOfItems[item.itemsName]?.count > 0 ? 'border border-[#61abfa] shadow-[0_0_20px_8px_rgba(96,165,250,1)]' : 'border-[#000102] shadow-[0_0_4px_2px_rgba(6,16,25,.5)]'
                 } hover:shadow-[0_0_15px_4px_rgba(96,165,250,1)] hover:border hover:border-[#61abfa]  ${item.bgColor} text-gray-200`}
                 >
-                <p className={`min-w-28 text-white-300 text-right ${noOfItems[item.itemsName]?.count ? 'text-black font-semibold' : ''}`}>
-                {noOfItems[item.itemsName]?.count ? `${noOfItems[item.itemsName].count} items` : "0 items"}
-                </p>
-            <span className='text-3xl text-white drop-shadow-[0px_2px_2px_rgba(0,0,0,0.7)]'>
-                {item.itemsName}
+              <span className='text-3xl text-white drop-shadow-[0px_2px_2px_rgba(0,0,0,0.7)] relative'>
+                {/* Item name */}
+                <span>
+                  {item.itemsName}
+                </span>
+
+                {/* Badge */}
+                {noOfItems[item.itemsName]?.count > 0 ?
+                <span
+                  className={`absolute top-0 right-0 text-white rounded-full bg-[#000e03] border-2 textborder-[#22fc35] border-[#22fc35]  px-2 py-0 text-lg ${noOfItems[item.itemsName]?.count ? 'font-semibold' : ''}`}
+                  style={{ transform: 'translate(50%, -50%)' }}
+                > 
+                  {`${noOfItems[item.itemsName].count}`}
+                </span>
+                :
+                ''
+          }
               </span>
+
               <div className='flex justify-between items-center mt-2 mb-1'>
                 <span
                   onClick={() => handleDecrement(item.itemsName, item.rate)}
