@@ -80,10 +80,10 @@ const SlidingMenu = ({ filteredItems, noOfItems }) => {
     <div>
       {/* Toggle Button */}
       <button
-        className="fixed top-96 right-[-8px] z-50 bg-yellow-400 text-black px-4 py-2 rounded-md"
+        className="fixed top-80 right-[-3px] z-50 bg-yellow-400 text-black px-4 py-2 border-2 border-red-50 rounded-md"
         onClick={toggleMenu}
       >
-        {isOpen ? 'C' : 'O'}
+        {isOpen ? 'CLOSE' : 'OPEN'}
       </button>
 
       {/* Sliding Menu */}
