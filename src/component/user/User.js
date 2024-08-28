@@ -32,10 +32,14 @@ const User = () => {
         }));
       };
       
+      const cancelAllOrder = () =>{
+        setNoOfItems('')
+      }
 
     const filteredCategories = cateName
     ? categories.filter((category) => category.name === cateName)
     : categories;
+
 
   return (
     <div className="ml-3">
@@ -133,6 +137,12 @@ const User = () => {
         
       ))}
     </div>
+    <button
+        className="fixed top-[42%] right-[-4px] z-50 bg-yellow-400 text-black px-4 py-2 border-2 border-red-50 rounded-md"
+        onClick={cancelAllOrder}
+      >
+        cALL
+      </button>
         <SlidingMenu filteredItems={filteredItems} noOfItems={noOfItems} />
     </div>
     
