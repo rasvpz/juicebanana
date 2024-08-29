@@ -80,7 +80,7 @@ const SlidingMenu = ({ filteredItems, noOfItems }) => {
     <div>
       {/* Toggle Button */}
       <button
-        className="fixed top-80 right-[-3px] z-50 bg-yellow-400 text-black px-4 py-2 border-2 border-red-50 rounded-md"
+        className="fixed top-72 right-[-3px] z-50 bg-yellow-400 text-black px-4 py-2 border-2 border-red-50 rounded-md"
         onClick={toggleMenu}
       >
         {isOpen ? 'CLOSE' : 'OPEN'}
@@ -103,7 +103,7 @@ const SlidingMenu = ({ filteredItems, noOfItems }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredItems?.map((key, idx) => (
+            {filteredItems?.map((key, idx, juiceName) => (
               <tr key={key} className="odd:bg-gray-700 border border-gray-500 even:bg-gray-800 hover:bg-gray-600">
                 <td className="py-1 px-4">{idx + 1}</td>
                 <td className="py-1 px-4">{key}</td>
