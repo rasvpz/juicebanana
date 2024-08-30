@@ -6,7 +6,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyA14aq2pHCkuZZ8N4bD4MzrKQtF9NluJ5A",
   authDomain: "juicebanana.firebaseapp.com",
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  databaseURL: "https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "juicebanana",
   storageBucket: "juicebanana.appspot.com",
   messagingSenderId: "148297074945",
