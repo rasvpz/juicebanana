@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set, push } from 'firebase/database';
+import { useSelector } from 'react-redux';
+
 
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector(store => store.user)
+  const place = user.displayName.split(',')[1]?.trim()
+
   const [totalValue, setTotalValue] = useState(false);
 
 
@@ -18,8 +23,8 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
         juiceName: key,  // Juice name
         qty: noOfItems[key]?.count || 0,  // Quantity
         rate : noOfItems[key]?.rate || 0,
-        amount: (noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0),          // Total cost
-        createdAt: indianDate, // Creation timestamp
+        amount: (noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0),        // Total cost
+        updatedAt: indianDate, // Creation timestamp
         isDeleted: false,  // Flag to indicate if the order is deleted
         isActive: true  // Flag to indicate if the order is active
       };
@@ -30,6 +35,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
       await set(newDocRef, {
         id: newDocRef.key,  // Use Firebase's generated ID
         total:totalValue,
+        place:place,  
         createdAt:  indianDate, // The timestamp for the entire order batch
         isDeleted: false,  // Indicates the entire order batch is not deleted
         isActive: true,  // Indicates the order batch is active

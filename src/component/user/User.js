@@ -11,7 +11,6 @@ const User = () => {
 const [show, setShow] = useState(false);
 
   const [successAlert, setSuccessAlert] = useState(false);
-  console.log("Alert", successAlert)
 
   useEffect(() => {
     if (successAlert) {
