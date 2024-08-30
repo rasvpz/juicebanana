@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { categories } from '../../utils/menu/categories';
 import SlidingMenu from './SlidingMenu';
 import CanseAllOrders from './CanseAllOrders';
+
 
 const User = () => {
     const [cateName, setCateName] = useState('Avil Milk');
     const [noOfItems, setNoOfItems] = useState({});
     const [catId, setCatId] = useState(1);
+const [show, setShow] = useState(false);
+
+  const [successAlert, setSuccessAlert] = useState(false);
+  console.log("Alert", successAlert)
+
+  useEffect(() => {
+    if (successAlert) {
+      setShow(true);
+      const timeoutId = setTimeout(() => setShow(false), 1000);
+      return () => clearTimeout(timeoutId);
+    }
+    
+  }, [successAlert]);
 
     // Filter items with count > 0
     const filteredItems = Object.keys(noOfItems).filter(
@@ -15,7 +29,7 @@ const User = () => {
 
     // Handle increment
     const handleIncrement = (juiceName, itemId, rate) => {
-        console.log("juics", juiceName)
+      setSuccessAlert(false)
         setNoOfItems((prevCounts) => ({
             ...prevCounts,
             [itemId]: {
@@ -53,8 +67,18 @@ const User = () => {
 
     return (
         <div className="ml-3">
+            {successAlert ? 
+              <div className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-500 ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+              <div className="border-4 border-white bg-[#166800] text-white px-6 py-8 rounded-lg shadow-lg text-center">
+                <span className="text-2xl font-semibold">Order added successfully!</span>
+              </div>
+            </div>
+            :
+            ''
+            }
             {/* Category Buttons */}
             <div>
+
                 {categories.map((category) => {
                     const totalItemsForCategory = category.itemsDetails
                         ? category.itemsDetails.reduce((total, item) => {
@@ -142,13 +166,23 @@ const User = () => {
                 ))}
             </div>
 
-            {/* Cancel all orders button */}
+
+            {
+              Object.keys(noOfItems).length > 0 ? (
+                <div>
+
+                  <CanseAllOrders setNoOfItems={setNoOfItems} />
+                  <SlidingMenu setSuccessAlert={setSuccessAlert} setNoOfItems={setNoOfItems} filteredItems={filteredItems} noOfItems={noOfItems} />
+                </div>
+              ) : ''
+            }
+
+{/* 
+
             <div>
             <CanseAllOrders setNoOfItems={setNoOfItems} />
-
-            {/* Sliding Menu */}
-            <SlidingMenu filteredItems={filteredItems} noOfItems={noOfItems} />
-            </div>
+            <SlidingMenu  setNoOfItems={setNoOfItems} filteredItems={filteredItems} noOfItems={noOfItems} />
+            </div> */}
         </div>
     );
 };

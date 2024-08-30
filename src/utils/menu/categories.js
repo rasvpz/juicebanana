@@ -52,7 +52,7 @@ export const categories = [
             { id:"ChikuShake", itemsName: "Chiku", rate:60, bgColor: "bg-red-300", fgColor: "bg-red-700" },
             { id:"mangoShake", itemsName: "mango", rate:70, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
             { id:"GrapeShake", itemsName: "Grape", rate:70, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
-            { id:"AppleShake", itemsName: "Apple", rate:700, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"AppleShake", itemsName: "Apple", rate:70, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
             { id:"KiwiShake", itemsName: "Kiwi", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
             { id:"ShamamShake", itemsName: "Shamam", rate:70, bgColor: "bg-red-500", fgColor: "bg-red-700" },
             { id:"AnarShake", itemsName: "Anar", rate:80, bgColor: "bg-red-300", fgColor: "bg-red-700" },
