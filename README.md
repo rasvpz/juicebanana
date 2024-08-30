@@ -76,3 +76,7 @@ Lebanana123abc?
 
 demo@gmail.com
 Demo123abc?
+
+https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app/:null
+
+https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app/
