@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import InputText from "./InputText";
+import Spinner from "./user/Spinner";
 import { checkValidate } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -14,7 +15,7 @@ const Login = () => {
     const ballRef = useRef(null);
 
     const [isSignInForm, setIsSignInForm] = useState(true);
-    const [errorMessage, setErrorMessage] = useState(true)
+    const [errorMessage, setErrorMessage] = useState()
 
 
     const handleButtonClick = (event) => {
@@ -92,8 +93,9 @@ const Login = () => {
       ref={ballRef}
       className="w-full max-w-md p-4 bg-black bg-opacity-80 text-white rounded-lg"
     >
-      <h1 className="font-bold text-3xl py-2 text-[#F5F5F5]"><span className="text-[#007BFF]">::
-      </span> {isSignInForm ? " Log in" : " Register now"} </h1>
+      {errorMessage ? <Spinner /> : 
+      <h1 className="font-bold text-3xl py-2 text-[#F5F5F5]"><span className="text-[#007BFF]">
+      </span> {isSignInForm ? ":: Log in" : ":: Register now"} </h1>}
       {
         !isSignInForm && (
         <InputText ref={firstName} placeholder="First name" />
@@ -104,7 +106,7 @@ const Login = () => {
       <button className="p-3 my-3 bg-[#007BFF]  w-full rounded-lg"
       onClick={handleButtonClick}
       >
-        {isSignInForm ? "LogIn" : "Register Now"}
+      {isSignInForm ? "LogIn" : "Register Now"}
       </button>
 
       <p className="text-red-500">{errorMessage}</p>
