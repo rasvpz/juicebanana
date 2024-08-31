@@ -8,7 +8,9 @@ const User = () => {
     const [cateName, setCateName] = useState('Avil Milk');
     const [noOfItems, setNoOfItems] = useState({});
     const [catId, setCatId] = useState(1);
-const [show, setShow] = useState(false);
+const [show, setShow] = useState(false); 
+
+
 
   const [successAlert, setSuccessAlert] = useState(false);
 
@@ -27,7 +29,7 @@ const [show, setShow] = useState(false);
     );
 
     // Handle increment
-    const handleIncrement = (juiceName, itemId, rate) => {
+    const handleIncrement = (juiceName, itemId, rate, categoryName,bgColor, fgColor, brdr) => {
       setSuccessAlert(false)
         setNoOfItems((prevCounts) => ({
             ...prevCounts,
@@ -35,6 +37,10 @@ const [show, setShow] = useState(false);
                 count: (prevCounts[itemId]?.count || 0) + 1,
                 rate: rate,
                 juiceName: juiceName,
+                categoryName:categoryName,
+                cardBg:bgColor,
+                btnBg:fgColor,
+                btnBrdr:brdr
             },
         }));
     };
@@ -153,7 +159,7 @@ const [show, setShow] = useState(false);
                                         -
                                     </span>
                                     <span
-                                        onClick={() => handleIncrement(item.itemsName, item.id, item.rate)}
+                                        onClick={() => handleIncrement(item.itemsName, item.id, item.rate, category.name, item.bgColor, item.fgColor, item.brdr)}
                                         className={`border-2 ${item.brdr} cursor-pointer text-[#c9c7c7] rounded-full px-2 ${item.fgColor} ${item.brdr} text-2xl`}
                                     >
                                         +
@@ -176,12 +182,6 @@ const [show, setShow] = useState(false);
               ) : ''
             }
 
-{/* 
-
-            <div>
-            <CanseAllOrders setNoOfItems={setNoOfItems} />
-            <SlidingMenu  setNoOfItems={setNoOfItems} filteredItems={filteredItems} noOfItems={noOfItems} />
-            </div> */}
         </div>
     );
 };

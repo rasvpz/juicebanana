@@ -6,51 +6,55 @@ import { useSelector } from 'react-redux';
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector(store => store.user)
-  const place = user.displayName.split(',')[1]?.trim()
+  const place = user?.displayName?.split(',')[1]?.trim()
 
   const [totalValue, setTotalValue] = useState(false);
 
 
   // Function to save data to Firebase
   const saveData = async (filteredItems, noOfItems) => {
-    setSuccessAlert(true)
+    console.log("Category", noOfItems);
     const db = getDatabase();  
-    // Prepare an array of order objects
     const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
     
-    const orders = filteredItems?.map((key) => {
+    // Ensure that noOfItems is an array
+    const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);
+    
+    const orders = itemsArray?.map((data) => {
       return {
-        juiceName: key,  // Juice name
-        qty: noOfItems[key]?.count || 0,  // Quantity
-        rate : noOfItems[key]?.rate || 0,
-        amount: (noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0),        // Total cost
+        category: data.categoryName || 0,
+        juiceName: data.juiceName || '',  // Juice name
+        qty: data.count || 0,  // Quantity
+        rate: data.rate || 0,  // Rate
+        amount: (data.count || 0) * (data.rate || 0),  // Total amount
+        cardBg: data.cardBg || '', 
+        btnBg: data.btnBg || '',
+        btnBrdr: data.btnBrdr || '',
         updatedAt: indianDate, // Creation timestamp
         isDeleted: false,  // Flag to indicate if the order is deleted
         isActive: true  // Flag to indicate if the order is active
       };
     });
-  
+    
     try {
-      const newDocRef = totalValue ? push(ref(db, "juice/orders")) : ''  // Create a new entry with a unique ID
+      const newDocRef = totalValue ? push(ref(db, "juice/orders")) : '';  // Create a new entry with a unique ID
       await set(newDocRef, {
         id: newDocRef.key,  // Use Firebase's generated ID
-        total:totalValue,
-        place:place,  
-        createdAt:  indianDate, // The timestamp for the entire order batch
+        total: totalValue,
+        place: place,  
+        createdAt: indianDate, // The timestamp for the entire order batch
         isDeleted: false,  // Indicates the entire order batch is not deleted
         isActive: true,  // Indicates the order batch is active
-        orders, // Store the array of order objects         
-      }).then((sucess) => {
-        // console.log("Succes", sucess)
-        setNoOfItems({})
-        
-      })
-      
-
+        orders // Store the array of order objects         
+      }).then((success) => {
+        setNoOfItems({});
+        setSuccessAlert(true);        
+      });
     } catch (error) {
       console.error("Error saving orders:", error.message);
     }
   };
+  
   
   const printTable = () => {
     const printWindow = window.open('', '', 'height=600,width=400');

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const user = useSelector(store => store.user)
+  const place = user?.displayName?.split(',')[1]?.trim()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -44,7 +45,7 @@ const Header = () => {
       </div>
       <div>
         <span type="button" className="text-white font-bold">
-          {user?.displayName ? user?.displayName : "" }</span>
+          {user?.displayName ? place : "" }</span>
           {
             user?.displayName ? 
           <div onClick={signoutButton} className="ml-4 text-red-600 cursor-pointer">
