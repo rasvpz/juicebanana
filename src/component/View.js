@@ -11,7 +11,8 @@ import Header from "./Header";
 import app from "../utils/firebase";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
-
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 const View = () => {
   const [viewOrders, setViewOrders] = useState([]);
 
@@ -45,72 +46,126 @@ const View = () => {
   };
 
   // Function to handle print
-  const printTable = (orderId) => {
+//   const printTable = (orderId) => {
+//     const order = getOrderDetails(orderId);
+//     const printWindow = window.open("", "", "height=600,width=400");
+
+//     if (printWindow && order) {
+//       printWindow.document.open();
+//       printWindow.document.write(`
+//         <html>
+//           <head>
+//             <title>Print Order</title>
+//             <style>
+//               table { width: 100%; border-collapse: collapse; }
+//               th, td { padding: 8px; border: 1px solid #ddd; }
+//               th { background-color: #f4f4f4; }
+//               body { font-family: Arial, sans-serif; }
+//             </style>
+//           </head>
+//           <body>
+//             <h3 align="center">LeBanana ${order.place}</h3>
+//             <table>
+//               <tr>
+//                 <td class="p-2 font-bold">Date : ${order.toDayDate}</td>
+//                 <td class="p-2 font-bold" align='right'>Time : ${
+//                   order.orderedTime
+//                 }</td>
+//               </tr>
+//               <tr>
+//                 <td colspan="3">
+//                   <table>
+//                     <thead>
+//                       <tr>
+//                         <th>Juice</th>
+//                         <th>Quantity</th>
+//                         <th>Rate</th>
+//                       </tr>
+//                     </thead>
+//                     <tbody>
+//                       ${order.orders
+//                         .map(
+//                           (item) => `
+//                         <tr>
+//                           <td>${item.juiceId}</td>
+//                           <td align="right">${item.qty}</td>
+//                           <td>₹${item.rate}</td>
+//                         </tr>
+//                       `
+//                         )
+//                         .join("")}
+//                       <tr>
+//                         <td align='right' colspan="2">Total</td>
+//                         <td>₹${order.total}</td>
+//                       </tr>
+//                     </tbody>
+//                   </table>
+//                 </td>
+//               </tr>
+//             </table>
+//             <p align="center">Thank You  Visit Agan</p>
+
+//             <script>window.print(); window.close();</script>
+//           </body>
+//         </html>
+//       `);
+//       printWindow.document.close();
+//     }
+//   };
+
+const printTable = (orderId) => {
     const order = getOrderDetails(orderId);
-    const printWindow = window.open("", "", "height=600,width=800");
-
-    if (printWindow && order) {
-      printWindow.document.open();
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>Print Order</title>
-            <style>
-              table { width: 100%; border-collapse: collapse; }
-              th, td { padding: 8px; border: 1px solid #ddd; }
-              th { background-color: #f4f4f4; }
-              body { font-family: Arial, sans-serif; }
-            </style>
-          </head>
-          <body>
-            <h3 align="center">LeBanana ${order.place}</h3>
-            <table>
-              <tr>
-                <td class="p-2 font-bold">Date : ${order.toDayDate}</td>
-                <td class="p-2 font-bold" align='right'>Time : ${
-                  order.orderedTime
-                }</td>
-              </tr>
-              <tr>
-                <td colspan="3">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Juice</th>
-                        <th>Quantity</th>
-                        <th>Rate</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${order.orders
-                        .map(
-                          (item) => `
-                        <tr>
-                          <td>${item.juiceId}</td>
-                          <td align="right">${item.qty}</td>
-                          <td>₹${item.rate}</td>
-                        </tr>
-                      `
-                        )
-                        .join("")}
-                      <tr>
-                        <td align='right' colspan="2">Total</td>
-                        <td>₹${order.total}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </table>
-            <p align="center">Thank You  Visit Agan</p>
-
-            <script>window.print(); window.close();</script>
-          </body>
-        </html>
-      `);
-      printWindow.document.close();
+  
+    if (order) {
+      // Create a new instance of jsPDF
+      const doc = new jsPDF();
+  
+      // Add title
+      doc.setFontSize(16);
+      doc.text(`LeBanana ${order.place}`, doc.internal.pageSize.getWidth() / 2, 10, { align: "center" });
+  
+      // Add Date and Time
+      doc.setFontSize(12);
+      doc.text(`Date: ${order.toDayDate}`, 15, 20); // Adjusted Y position for Date
+      doc.text(`Time: ${order.orderedTime}`, doc.internal.pageSize.getWidth() - 15, 20, { align: "right" }); // Adjusted Y position for Time
+  
+      // Add table with no background color in alternate rows and apply border to all columns
+      doc.autoTable({
+        head: [["Juice", "Quantity", "Rate"]],
+        body: order.orders.map(item => [item.juiceId, item.qty, `₹${item.rate}`]),
+        headStyles: {
+          fillColor: [255, 255, 255], // White background for the header
+          textColor: [0, 0, 0], // Black text for the header
+          lineWidth: 0.1, // Border width
+        },
+        bodyStyles: {
+          fillColor: [255, 255, 255], // No background color for all rows
+          textColor: [0, 0, 0], // Black text for body cells
+          lineWidth: 0.1, // Border width for body cells
+        },
+        alternateRowStyles: {
+          fillColor: null, // Remove the alternate row background color
+        },
+        tableLineWidth: 0.1, // Border width for the table
+        tableLineColor: [0, 0, 0], // Black border color
+        margin: { top: 25 }, // Adding top margin to ensure the table does not overlap with the title
+      });
+  
+      // Add total (Adjust Y position to be after the table)
+      const finalY = doc.lastAutoTable.finalY; // Get the final Y position after the table
+      doc.setFontSize(12);
+      doc.text(`Total: Rs ${order.total}`, doc.internal.pageSize.getWidth() - 40, finalY + 10, { align: "right" });
+  
+      // Add a thank you note
+      doc.text("Thank You Visit Again", doc.internal.pageSize.getWidth() / 2, finalY + 20, { align: "center" });
+  
+      // Save the PDF
+      doc.save(`Order_${orderId}.pdf`);
     }
   };
+  
+  
+  
 
   return (
     <div className="relative min-h-screen">
