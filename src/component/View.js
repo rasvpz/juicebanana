@@ -124,7 +124,7 @@ const printTable = (orderId) => {
       const dateTimeMarginBottom = 10;
   
       // Add title
-      doc.setFontSize(32);
+      doc.setFontSize(40);
       const titleY = 15;
       doc.text(`LeBanana ${order.place}`, doc.internal.pageSize.getWidth() / 2, titleY, { align: "center" });
   
@@ -132,7 +132,7 @@ const printTable = (orderId) => {
       const dateTimeY = titleY + titleMarginBottom;
   
       // Add Date and Time
-      doc.setFontSize(22);
+      doc.setFontSize(32);
       doc.text(`Date: ${order.toDayDate}`, 15, dateTimeY); // Adjusted Y position for Date
       doc.text(`Time: ${order.orderedTime}`, doc.internal.pageSize.getWidth() - 15, dateTimeY, { align: "right" }); // Adjusted Y position for Time
   
@@ -144,13 +144,13 @@ const printTable = (orderId) => {
           fillColor: [255, 255, 255], // White background for the header
           textColor: [0, 0, 0], // Black text for the header
           lineWidth: 0.1, // Border width
-          fontSize: 18, // Font size for the table head
+          fontSize: 32, // Font size for the table head
         },
         bodyStyles: {
           fillColor: [255, 255, 255], // No background color for all rows
           textColor: [0, 0, 0], // Black text for body cells
           lineWidth: 0.1, // Border width for body cells
-          fontSize: 18, // Font size for the table body
+          fontSize: 32, // Font size for the table body
         },
         alternateRowStyles: {
           fillColor: null, // Remove the alternate row background color
@@ -162,11 +162,11 @@ const printTable = (orderId) => {
   
       // Add total (Adjust Y position to be after the table)
       const finalY = doc.lastAutoTable.finalY; // Get the final Y position after the table
-      doc.setFontSize(22);
-      doc.text(`Total: Rs ${order.total}`, doc.internal.pageSize.getWidth() - 34, finalY + 10, { align: "right" });
+      doc.setFontSize(32);
+      doc.text(`Total: Rs ${order.total}`, doc.internal.pageSize.getWidth() - 30, finalY + 15, { align: "right" });
   
       // Add a thank you note
-      doc.text("*** Thank You Visit Again ***", doc.internal.pageSize.getWidth() / 2, finalY + 20, { align: "center" });
+      doc.text("*** Thank You Visit Again ***", doc.internal.pageSize.getWidth() / 2, finalY + 35, { align: "center" });
   
       // Save the PDF
       doc.save(`Order_${orderId}.pdf`);
