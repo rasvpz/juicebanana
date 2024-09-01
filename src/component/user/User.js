@@ -36,6 +36,7 @@ const [show, setShow] = useState(false);
             [itemId]: {
                 count: (prevCounts[itemId]?.count || 0) + 1,
                 rate: rate,
+                juiceId:itemId,
                 juiceName: juiceName,
                 categoryName:categoryName,
                 cardBg:bgColor,
@@ -60,7 +61,8 @@ const [show, setShow] = useState(false);
                     },
                 };
             } else {
-                return prevCounts; // No change if count is 0 or less
+            // setIsOpen(false);              
+                return prevCounts // No change if count is 0 or less
             }
         });
     };

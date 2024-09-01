@@ -7,6 +7,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector(store => store.user)
   const place = user?.displayName?.split(',')[1]?.trim()
+  const waiter = user?.displayName?.split(',')[0]?.trim()
 
   const [totalValue, setTotalValue] = useState(false);
 
@@ -16,6 +17,8 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
     console.log("Category", noOfItems);
     const db = getDatabase();  
     const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    const toDayDate = indianDate?.split(',')[0]?.trim()
+    const orderedTime = indianDate?.split(',')[1]?.trim()
     
     // Ensure that noOfItems is an array
     const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);
@@ -24,6 +27,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
       return {
         category: data.categoryName || 0,
         juiceName: data.juiceName || '',  // Juice name
+        juiceId:data.juiceId || 0,
         qty: data.count || 0,  // Quantity
         rate: data.rate || 0,  // Rate
         amount: (data.count || 0) * (data.rate || 0),  // Total amount
@@ -41,7 +45,10 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
       await set(newDocRef, {
         id: newDocRef.key,  // Use Firebase's generated ID
         total: totalValue,
-        place: place,  
+        waiter:waiter,
+        place: place, 
+        toDayDate:toDayDate,
+        orderedTime:orderedTime,
         createdAt: indianDate, // The timestamp for the entire order batch
         isDeleted: false,  // Indicates the entire order batch is not deleted
         isActive: true,  // Indicates the order batch is active
