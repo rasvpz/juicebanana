@@ -79,25 +79,76 @@ export const categories = [
         id: 3,
         name: "Tender Special",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails: [
+            { id:"TenderCocunutSp", itemsName: "TenderCocunut", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"TenderVannilaSp", itemsName: "TenderVannila", rate:70, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"TenderBoostSp", itemsName: "TenderBoost", rate:70, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"TenderChikkuSp", itemsName: "TenderChikku", rate:70, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"TenderPistaSp", itemsName: "TenderPista", rate:80, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"TenderOreoSp", itemsName: "TenderOreo", rate:80, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"TenderCashewSp", itemsName: "TenderCashew", rate:80, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"TenderDatesSp", itemsName: "TenderDates", rate:90, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"TenderDryFriutSp", itemsName: "TenderDryFriut", rate:90, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"TenderSpecielSp", itemsName: "TenderSpeciel", rate:10, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+           ]
     },
     {
         id: 4,
         name: "Mud Shakes",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails: [
+            { id:"ChoclateMud", itemsName: "ChoclateMud", rate:95, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"HocusPocusMud", itemsName: "HocusPocusMud", rate:95, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"OreoCrumbleMud", itemsName: "OreoCrumble", rate:90, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"RockyChikkuMud", itemsName: "RockyChikku", rate:90, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"PeanutMud", itemsName: "PeanutMud", rate:90, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"FriutMud", itemsName: "FriutMud", rate:90, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"5StarMud", itemsName: "5StarMud", rate:95, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"SnickersMud", itemsName: "SnickersMud", rate:95, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"KitkatMud", itemsName: "KitkatMud", rate:95, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"CadberryMud", itemsName: "Cadberry", rate:95, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"PistaMud", itemsName: "PistaMud", rate:95, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"MississippiMud", itemsName: "MississippiMud", rate:110, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"FigAndHoneyMud", itemsName: "FigAndHoneyMud", rate:110, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"CashewMud", itemsName: "CashewMud", rate:110, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"DryFriutmud", itemsName: "DryFriutmud", rate:110, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"NuttellaMud", itemsName: "NuttellaMud", rate:120, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"HiBigBubblesMud", itemsName: "HighBigBubbles", rate:160, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+          ]
     },
     {
         id: 6,
         name: "Fresh Juice",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
-    },
+        fg: "text-black-600",
+        itemsDetails: [
+            { id:"orangeFj", itemsName: "orange", rate:60, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"AppleFj", itemsName: "Apple", rate:60, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"GrapesFj", itemsName: "Grapes", rate:60, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"ShamamFj", itemsName: "Shamam", rate:60, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"MussambiFj", itemsName: "Mussambi", rate:60, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"PineappleFj", itemsName: "Pineapple", rate:60, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"MangoFj", itemsName: "Mango", rate:60, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"waterMelonFj", itemsName: "waterMelon", rate:60, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"AnarFj", itemsName: "Anar", rate:70, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"PappayaFj", itemsName: "Pappaya", rate:60, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            ]
+        },
     {
         id: 7,
         name: "Lime",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            { id:"FreshLime", itemsName: "FreshLime", rate:20, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"MintLime", itemsName: "MintLime", rate:30, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"GingerLime", itemsName: "GingerLime", rate:30, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"pineappleLime", itemsName: "pineappleLime", rate:30, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"GrapeLime", itemsName: "GrapeLime", rate:30, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"OrangeLime", itemsName: "OrangeLime", rate:30, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+        ]
     },
     // {
     //     id: 8,
@@ -109,36 +160,82 @@ export const categories = [
         id: 9,
         name: "Mojitos",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails: [
+            { id:"BleedBlueMj", itemsName: "BleedBlue", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"PassionFriutMj", itemsName: "PassionFriut", rate:70, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"GreenAppleMj", itemsName: "GreenApple", rate:70, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"StrawberryMj", itemsName: "Strawberry", rate:70, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"OrangeMj", itemsName: "Orange", rate:70, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"GuavaMj", itemsName: "Guava", rate:70, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"KiwiMj", itemsName: "Kiwi", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+        ]
     },
     {
         id: 10,
         name: "Malva",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            {id:"BananaMalva", itemsName: "BananaMalva", rate:90, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
+            {id:"ChikkuMalva", itemsName: "ChikkuMalva", rate:90, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
+            {id:"MangoMalva", itemsName: "MangoMalva", rate:100, bgColor: "bg-[#692e2e]", fgColor: "bg-[#a64a40]", brdr:"border-[#a64a40]", textColor:"text-[#a64a40]"},
+            {id:"Avacadomalva", itemsName: "Avacadomalva", rate:100, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#A97D48]", brdr:"border-[#A97D48]", textColor:"text-[#312020]"},
+           
+        ]
     },
     {
         id: 11,
         name: "Cold Coffee",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            {id:"HardRockCF", itemsName: "HardRockCoffee", rate:70, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
+            {id:"StrawberryCF", itemsName: "StrawberryCoffee", rate:70, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#a79d84]", brdr:"border-[#a79d84]", textColor:"text-[#a79d84]"},
+            {id:"ChocolateCF", itemsName: "ChocolateCoffee", rate:70, bgColor: "bg-[#8B4513]", fgColor: "bg-[#723c0e]", brdr:"border-[#723c0e]", textColor:"text-[#723c0e]"},
+            {id:"MudCF", itemsName: "MudCoffee", rate:90, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#E6C9A2]", brdr:"border-[#E6C9A2]", textColor:"text-[#E6C9A2]"},
+         
+        ]
     },
     {
         id: 12,
         name: "Ice Cream",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            {id:"FriutOurLoadSp", itemsName: "FriutOurLoadSp", rate:110, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
+            {id:"GudBud", itemsName: "GudBud", rate:130, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#a79d84]", brdr:"border-[#a79d84]", textColor:"text-[#a79d84]"},  
+        ]
     },
     {
         id: 13,
         name: "Falooda",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            { id:"FrtSldWithIceCream", itemsName: "FriutSaladWithIceCream", rate:70, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"NormalFlda", itemsName: "NormalFalooda", rate:90, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"MangoDreamFlda", itemsName: "MangoDreamFalooda", rate:110, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+            { id:"StrberryDreamFlda", itemsName: "StrawberryDreamFalooda", rate:110, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
+            { id:"ZaharFlda", itemsName: "ZaharFalooda", rate:110, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
+            { id:"LeBananSpecialFlda", itemsName: "LeBananSpecialFalooda", rate:140, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"TenderCocunutFlda", itemsName: "TenderCocunutFalooda", rate:130, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
+            { id:"RoyalFlda", itemsName: "RoyalFalooda", rate:130, bgColor: "bg-red-500", fgColor: "bg-red-700" },
+            { id:"DryFriutFlda", itemsName: "DryFriutFalooda", rate:140, bgColor: "bg-red-300", fgColor: "bg-red-700" },
+   ]
     },
     {
         id: 14,
         name: "Chocolate",
         bg: "bg-[#007BFF]",
-        fg: "text-black-600"
+        fg: "text-black-600",
+        itemsDetails:[
+            {id:"ChocolateFudge", itemsName: "ChocolateFudge", rate:70, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
+            {id:"brownieWithIceCream", itemsName: "brownieWithIceCream", rate:110, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
+            {id:"DryFriutSundae", itemsName: "DryFriutSundae", rate:100, bgColor: "bg-[#692e2e]", fgColor: "bg-[#a64a40]", brdr:"border-[#a64a40]", textColor:"text-[#a64a40]"},
+            {id:"CandyCrash", itemsName: "CandyCrash", rate:100, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#A97D48]", brdr:"border-[#A97D48]", textColor:"text-[#312020]"},
+            {id:"CookiesAndCream", itemsName: "CookiesAndCream", rate:80, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
+           
+        ]
     }
 ];
