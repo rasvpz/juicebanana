@@ -138,19 +138,19 @@ const printTable = (orderId) => {
   
       // Add table with increased font size for the header and body
       doc.autoTable({
-        head: [["Juice", "Quantity", "Rate"]],
+        head: [["Juice", "Qty", "Rate"]],
         body: order.orders.map(item => [item.juiceId, { content: item.qty, align: 'right' }, { content: `${item.amount}`, align: 'right' }]),
         headStyles: {
           fillColor: [255, 255, 255], // White background for the header
           textColor: [0, 0, 0], // Black text for the header
-          lineWidth: 0.1, // Border width
-          fontSize: 32, // Font size for the table head
+          lineWidth: 0.5, // Border width
+          fontSize: 28, // Font size for the table head
         },
         bodyStyles: {
           fillColor: [255, 255, 255], // No background color for all rows
           textColor: [0, 0, 0], // Black text for body cells
-          lineWidth: 0.1, // Border width for body cells
-          fontSize: 32, // Font size for the table body
+          lineWidth: 0.5, // Border width for body cells
+          fontSize: 28, // Font size for the table body
         },
         alternateRowStyles: {
           fillColor: null, // Remove the alternate row background color
