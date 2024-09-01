@@ -128,3 +128,137 @@
 // DryFriutSundae:100
 // CandyCrash:100
 // CookiesAndCream:80
+// viewOrders={
+//     "-O5hpaRPnsZD83rrwb5R": {
+//         "createdAt": "1/9/2024, 7:16:35 pm",
+//         "id": "-O5hpaRPnsZD83rrwb5R",
+//         "isActive": true,
+//         "isDeleted": false,
+//         "orderedTime": "7:16:35 pm",
+//         "orders": [
+//             {
+//                 "amount": 180,
+//                 "btnBg": "bg-[#a52d2e]",
+//                 "btnBrdr": "border-[#a52d2e]",
+//                 "cardBg": "bg-red-500",
+//                 "category": "Avil Milk",
+//                 "isActive": true,
+//                 "isDeleted": false,
+//                 "juiceName": "WaterMelon",
+//                 "qty": 3,
+//                 "rate": 60,
+//                 "updatedAt": "1/9/2024, 7:16:35 pm"
+//             },
+//             {
+//                 "amount": 70,
+//                 "btnBg": "bg-[#765834]",
+//                 "btnBrdr": "border-[#765834]",
+//                 "cardBg": "bg-[#A97D48]",
+//                 "category": "Avil Milk",
+//                 "isActive": true,
+//                 "isDeleted": false,
+//                 "juiceName": "Caramel",
+//                 "qty": 1,
+//                 "rate": 70,
+//                 "updatedAt": "1/9/2024, 7:16:35 pm"
+//             },
+//             {
+//                 "amount": 120,
+//                 "btnBg": "bg-red-700",
+//                 "btnBrdr": "",
+//                 "cardBg": "bg-red-300",
+//                 "category": "Mocktail Shake",
+//                 "isActive": true,
+//                 "isDeleted": false,
+//                 "juiceName": "Chiku",
+//                 "qty": 2,
+//                 "rate": 60,
+//                 "updatedAt": "1/9/2024, 7:16:35 pm"
+//             },
+//             {
+//                 "amount": 70,
+//                 "btnBg": "bg-yellow-700",
+//                 "btnBrdr": "",
+//                 "cardBg": "bg-yellow-500",
+//                 "category": "Mocktail Shake",
+//                 "isActive": true,
+//                 "isDeleted": false,
+//                 "juiceName": "Kiwi",
+//                 "qty": 1,
+//                 "rate": 70,
+//                 "updatedAt": "1/9/2024, 7:16:35 pm"
+//             }
+//         ],
+//         "place": "Alathur",
+//         "toDayDate": "1/9/2024",
+//         "total": 440,
+//         "waiter": "Rashid"
+//     }
+// }
+
+
+
+// const printTable = (orderId) => {
+//     const order = getOrderDetails(orderId);
+//     const printWindow = window.open('', '', 'height=600,width=800');
+
+//     if (printWindow && order) {
+//       printWindow.document.open();
+//       printWindow.document.write(`
+//         <html>
+//           <head>
+//             <title>Print Order</title>
+//             <style>
+//               table { width: 100%; border-collapse: collapse; }
+//               th, td { padding: 8px; border: 1px solid #ddd; }
+//               th { background-color: #f4f4f4; }
+//               body { font-family: Arial, sans-serif; }
+//             </style>
+//           </head>
+//           <body>
+//             <h3 align="center">LeBanana ${order.place}</h3>
+//             <table>
+//               <tr>
+//                 <td class="p-2 font-bold">Date : ${order.toDayDate}</td>
+//                 <td class="p-2 font-bold" align='right'>Time : ${order.orderedTime}</td>
+//               </tr>
+//               <tr>
+//                 <td colspan="3">
+//                   <table>
+//                     <thead>
+//                       <tr>
+//                         <th>Juice</th>
+//                         <th>Quantity</th>
+//                         <th>Rate</th>
+//                       </tr>
+//                     </thead>
+//                     <tbody>
+//                       ${order.orders.map(item => `
+//                         <tr>
+//                           <td>${item.juiceName}</td>
+//                           <td>${item.qty}</td>
+//                           <td>₹${item.rate}</td>
+//                         </tr>
+//                       `).join('')}
+//                       <tr>
+//                         <td align='right' colspan="2">Total</td>
+//                         <td>₹${order.total}</td>
+//                       </tr>
+//                     </tbody>
+//                   </table>
+//                 </td>
+//               </tr>
+//             </table>
+//             <p align="center">Thank You  Visit Agan</p>
+
+//             <script>window.print(); window.close();</script>
+//           </body>
+//         </html>
+//       `);
+//       printWindow.document.close();
+//     }
+//   };
+
+{/* <button onClick={() => printTable(order.id)} className='bg-red-500 p-2 text-white font-bold rounded'>
+PRINT
+</button> */}
