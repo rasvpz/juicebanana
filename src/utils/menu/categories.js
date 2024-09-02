@@ -41,6 +41,7 @@ export const categories = [
             {id:"FigAvil", itemsName: "Fig&Honey", rate:120, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#816346]", brdr:"border-[#816346]", textColor:"text-[#816346]"},
             {id:"DryFruitAvil", itemsName: "DryFruit", rate:120, bgColor: "bg-[#D3CDB0]", fgColor: "bg-[#95927e]", brdr:"border-[#95927e]", textColor:"text-[#95927e]"},
             {id:"SpecialNutsAvil", itemsName: "SpecialNuts", rate:120, bgColor: "bg-[#2b3940]", fgColor: "bg-[#405d6f]", brdr:"border-[#405d6f]", textColor:"text-[#405d6f]"},
+            {id:"KitkatAvil", itemsName: "KitKatAvil", rate:80, bgColor: "bg-[#544535]", fgColor: "bg-[#7c6d47]", brdr:"border-[#7c6d47]", textColor:"text-[#7c6d47]"},
             {id:"TendrCoconutAvil", itemsName: "TndrCoconut", rate:90, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
 
           ]  
@@ -207,8 +208,18 @@ export const categories = [
         bg: "bg-[#007BFF]",
         fg: "text-black-600",
         itemsDetails:[
-            {id:"FriutOurLoadSp", itemsName: "FriutOurLoadSp", rate:110, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
-            {id:"GudBud", itemsName: "GudBud", rate:130, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#a79d84]", brdr:"border-[#a79d84]", textColor:"text-[#a79d84]"},  
+            {id:"FriutOurLoadSpIC", itemsName: "FrtOurLdSp", rate:110, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
+            {id:"GudBudIC", itemsName: "GudBud", rate:130, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#a79d84]", brdr:"border-[#a79d84]", textColor:"text-[#a79d84]"},  
+            {id:"VanilaIC", itemsName: "Vanila", rate:25, bgColor: "bg-[#f3e5ab]", fgColor: "bg-[#a29871]", brdr:"border-[#a29871]", textColor:"text-[#a29871]"},  
+            {id:"PistaIC", itemsName: "Pista", rate:30, bgColor: "bg-[#DAF7A6]", fgColor: "bg-[#a4b97e]", brdr:"border-[#a4b97e]", textColor:"text-[#a4b97e]"},  
+            {id:"StrBerryIceIC", itemsName: "Strawberry", rate:30, bgColor: "bg-[#de859f]", fgColor: "bg-[#9e6173]", brdr:"border-[#9e6173]", textColor:"text-[#9e6173]"},  
+            {id:"ButrSchotchIC", itemsName: "ButrSchotch", rate:30, bgColor: "bg-[#d4d785]", fgColor: "bg-[#9d9f64]", brdr:"border-[#9d9f64]", textColor:"text-[#9d9f64]"},  
+            {id:"ChocolateIC", itemsName: "Chocolate", rate:30, bgColor: "bg-[#514548]", fgColor: "bg-[#7d6a6f]", brdr:"border-[#7d6a6f]", textColor:"text-[#7d6a6f]"},  
+            {id:"TenderIC", itemsName: "Tender", rate:40, bgColor: "bg-[#cefead]", fgColor: "bg-[#9cc182]", brdr:"border-[#9cc182]", textColor:"text-[#9cc182]"},  
+            {id:"SpanishIC", itemsName: "Spanish", rate:40, bgColor: "bg-[#97c7f0]", fgColor: "bg-[#7197b6]", brdr:"border-[#7197b6]", textColor:"text-[#7197b6]"},  
+            {id:"MangoIC", itemsName: "Mango", rate:40, bgColor: "bg-[#e3e989]", fgColor: "bg-[#b0b46b]", brdr:"border-[#b0b46b]", textColor:"text-[#b0b46b]"},  
+            {id:"BlueBryIC", itemsName: "BlueBerry", rate:50, bgColor: "bg-[#67cbf5]", fgColor: "bg-[#5f98b0]", brdr:"border-[#5f98b0]", textColor:"text-[#5f98b0]"},  
+       
         ]
     },
     {
