@@ -5,6 +5,10 @@ export const categories = [
         bg: "bg-[#007BFF]",
         fg: "text-black-600",
         itemsDetails: [
+            {id:"NormalAvil", itemsName: "Nrml AvilMilk", rate:30, bgColor: "bg-yellow-500", fgColor: "bg-[#a37d06]", brdr:"border-[#a37d06]", textColor:"text-[#a37d06]"},
+            {id:"FruitAvil", itemsName: "Fruit Avil", rate:35, bgColor: "bg-red-500", fgColor: "bg-[#a52d2e]", brdr:"border-[#a52d2e]", textColor:"text-[#a52d2e]"},
+            {id:"SpAvil", itemsName: "Avil Sp", rate:45, bgColor: "bg-pink-500", fgColor: "bg-[#aa346f]", brdr:"border-[#aa346f]", textColor:"text-[#aa346f]"},
+            {id:"SpBoostAvil", itemsName: "Avil Boost Sp", rate:45, bgColor: "bg-red-300", fgColor: "bg-[#af7373]", brdr:"border-[#af7373]", textColor:"text-[#af7373]"},
             {id:"PinappleAvil", itemsName: "Pinapple", rate:60, bgColor: "bg-yellow-500", fgColor: "bg-[#a37d06]", brdr:"border-[#a37d06]", textColor:"text-[#a37d06]"},
             {id:"WaterMelonAvil", itemsName: "WaterMelon", rate:60, bgColor: "bg-red-500", fgColor: "bg-[#a52d2e]", brdr:"border-[#a52d2e]", textColor:"text-[#a52d2e]"},
             {id:"RoseAvil", itemsName: "Rose", rate:60, bgColor: "bg-pink-500", fgColor: "bg-[#aa346f]", brdr:"border-[#aa346f]", textColor:"text-[#aa346f]"},
