@@ -241,5 +241,19 @@ export const categories = [
             {id:"CookiesAndCream", itemsName: "CookiesAndCream", rate:80, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
            
         ]
+    },
+    {
+        id: 15,
+        name: "Soda",
+        bg: "bg-[#007BFF]",
+        fg: "text-black-600",
+        itemsDetails:[
+            {id:"SodaSlt", itemsName: "Salt Soda", rate:20, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
+            {id:"SodaGrp", itemsName: "Grape Soda", rate:30, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
+            {id:"SodaChly", itemsName: "Chilly Soda", rate:30, bgColor: "bg-[#692e2e]", fgColor: "bg-[#a64a40]", brdr:"border-[#a64a40]", textColor:"text-[#a64a40]"},
+            {id:"GrApplSoda", itemsName: "GreenApple Soda", rate:30, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#A97D48]", brdr:"border-[#A97D48]", textColor:"text-[#312020]"},
+            {id:"PinappleSoda", itemsName: "Pinapple Soda", rate:30, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
+           
+        ]
     }
 ];
