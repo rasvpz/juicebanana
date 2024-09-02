@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set, push } from 'firebase/database';
 import { useSelector } from 'react-redux';
+import { indianDate, toDayDate,   orderedTime } from '../../utils/constsnts/constant'
 
 
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
@@ -14,11 +15,10 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
 
   // Function to save data to Firebase
   const saveData = async (filteredItems, noOfItems) => {
-    console.log("Category", noOfItems);
     const db = getDatabase();  
-    const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-    const toDayDate = indianDate?.split(',')[0]?.trim()
-    const orderedTime = indianDate?.split(',')[1]?.trim()
+    // const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    // const toDayDate = indianDate?.split(',')[0]?.trim()
+    // const orderedTime = indianDate?.split(',')[1]?.trim()
     
     // Ensure that noOfItems is an array
     const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);

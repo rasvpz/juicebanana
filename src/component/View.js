@@ -13,9 +13,11 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import { toDayDate } from '../utils/constsnts/constant'
+
 const View = () => {
   const [viewOrders, setViewOrders] = useState([]);
-
+console.log("date", toDayDate)
   useEffect(() => {
     const db = getDatabase(app);
     const dbRef = ref(db, "juice/orders");
@@ -24,9 +26,12 @@ const View = () => {
     (async () => {
       try {
         const query = firebaseQuery(
-          dbRef,
-          orderByChild("place"),
-          equalTo("Alathur")
+        //   dbRef,
+        //   orderByChild("place"),
+        //   equalTo("Alathur")
+        dbRef,
+        orderByChild("toDayDate"),
+        equalTo(toDayDate)
         );
 
         const allOrders = await get(query);
@@ -42,7 +47,7 @@ const View = () => {
 
   // Function to get the details of the selected order
   const getOrderDetails = (orderId) => {
-    return viewOrders.find((order) => order.id === orderId);
+    return viewOrders?.find((order) => order.id === orderId);
   };
 
   // Function to handle print
@@ -190,7 +195,7 @@ const printTable = (orderId) => {
         <h1 className="text-xl font-bold">View Orders</h1>
         <div className="flex flex-wrap justify-center w-full max-w-screen-lg mx-auto gap-1">
           {/* Display orders */}
-          {viewOrders.map((order, index) => (
+          {viewOrders?.map((order, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow p-2 w-1/3 max-w-xs"
