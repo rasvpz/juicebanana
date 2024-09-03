@@ -12,7 +12,6 @@ export const categories = [
             {id:"PinappleAvil", itemsName: "Pinapple", rate:60, bgColor: "bg-yellow-500", fgColor: "bg-[#a37d06]", brdr:"border-[#a37d06]", textColor:"text-[#a37d06]"},
             {id:"WaterMelonAvil", itemsName: "WaterMelon", rate:60, bgColor: "bg-red-500", fgColor: "bg-[#a52d2e]", brdr:"border-[#a52d2e]", textColor:"text-[#a52d2e]"},
             {id:"RoseAvil", itemsName: "Rose", rate:60, bgColor: "bg-pink-500", fgColor: "bg-[#aa346f]", brdr:"border-[#aa346f]", textColor:"text-[#aa346f]"},
-            {id:"ButterSchotchAvil", itemsName: "ButterSchotch", rate:60, bgColor: "bg-red-300", fgColor: "bg-[#af7373]", brdr:"border-[#af7373]", textColor:"text-[#af7373]"},
             {id:"CaramelAvil", itemsName: "Caramel", rate:70, bgColor: "bg-[#A97D48]", fgColor: "bg-[#765834]", brdr:"border-[#765834]", textColor:"text-[#765834]"},
             {id:"WonderJoyAvil", itemsName: "WonderJoy", rate:70, bgColor: "bg-[#D3B1F7]", fgColor: "bg-[#967eb1]", brdr:"border-[#967eb1]", textColor:"text-[#967eb1]"},
             {id:"ChikkuAvil", itemsName: "Chikku", rate:70, bgColor: "bg-[#5d501e]", fgColor: "bg-[#a48d38]", brdr:"border-[#a48d38]", textColor:"text-[#a48d38]"},
@@ -27,7 +26,6 @@ export const categories = [
             {id:"MalgoaNutAvil", itemsName: "MalgoaNut", rate:90, bgColor: "bg-[#8B4513]", fgColor: "bg-[#723c0e]", brdr:"border-[#723c0e]", textColor:"text-[#723c0e]"},
             {id:"FruitsAvil", itemsName: "Fruits&Nuts", rate:75, bgColor: "bg-[#FFF8DC]", fgColor: "bg-[#E6C9A2]", brdr:"border-[#E6C9A2]", textColor:"text-[#E6C9A2]"},
             {id:"NutMixAvil", itemsName: "NutMix", rate:75, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a68c02]", brdr:"border-[#a68c02]", textColor:"text-[#a68c02]"},
-            {id:"SpanishDelightAvil", itemsName: "SpanishDelight", rate:75, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
             {id:"RoyalAvil", itemsName: "Royal", rate:70, bgColor: "bg-[#692e2e]", fgColor: "bg-[#a64a40]", brdr:"border-[#a64a40]", textColor:"text-[#a64a40]"},
             {id:"BadamAvilAvil", itemsName: "BadamAvil", rate:80, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#A97D48]", brdr:"border-[#A97D48]", textColor:"text-[#312020]"},
             {id:"OreoAvil", itemsName: "Oreo", rate:80, bgColor: "bg-[#312020]", fgColor: "bg-[#7b5240]", brdr:"border-[#7b5240]", textColor:"text-[#7b5240]"},
@@ -36,14 +34,16 @@ export const categories = [
             {id:"AfghaniAvil", itemsName: "Afghani", rate:90, bgColor: "bg-[#69642e]", fgColor: "bg-[#3c3a1d]", brdr:"border-[#3c3a1d]", textColor:"text-[#3c3a1d]"},
             {id:"BhoomBoomAvil", itemsName: "BhoomBoom", rate:100, bgColor: "bg-red-500", fgColor: "bg-[#a83131]", brdr:"border-[#a83131]", textColor:"text-[#a83131]"},
             {id:"NeuttelaAvil", itemsName: "Neuttela", rate:90, bgColor: "bg-[#A5743C]", fgColor: "bg-[#6d4e2a]", brdr:"border-[#6d4e2a]", textColor:"text-[#6d4e2a]"},
-            {id:"HCombMouldAvil", itemsName: "HCombMould", rate:80, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a58b02]", brdr:"border-[#a58b02]", textColor:"text-[#a58b02]"},
             {id:"SnickersAvil", itemsName: "Snickers", rate:80, bgColor: "bg-[#3b3b3b]", fgColor: "bg-[#6e6e6f]", brdr:"border-[#6e6e6f]", textColor:"text-[#6e6e6f]"},
             {id:"FigAvil", itemsName: "Fig&Honey", rate:120, bgColor: "bg-[#C99A6B]", fgColor: "bg-[#816346]", brdr:"border-[#816346]", textColor:"text-[#816346]"},
             {id:"DryFruitAvil", itemsName: "DryFruit", rate:120, bgColor: "bg-[#D3CDB0]", fgColor: "bg-[#95927e]", brdr:"border-[#95927e]", textColor:"text-[#95927e]"},
             {id:"SpecialNutsAvil", itemsName: "SpecialNuts", rate:120, bgColor: "bg-[#2b3940]", fgColor: "bg-[#405d6f]", brdr:"border-[#405d6f]", textColor:"text-[#405d6f]"},
             {id:"KitkatAvil", itemsName: "KitKatAvil", rate:80, bgColor: "bg-[#544535]", fgColor: "bg-[#7c6d47]", brdr:"border-[#7c6d47]", textColor:"text-[#7c6d47]"},
             {id:"TendrCoconutAvil", itemsName: "TndrCoconut", rate:90, bgColor: "bg-[#006400]", fgColor: "bg-[#23a103]", brdr:"border-[#23a103]", textColor:"text-[#23a103]"},
-
+            {id:"SpanishDelightAvil", itemsName: "SpanishDelight", rate:75, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
+            {id:"ButterSchotchAvil", itemsName: "ButterSchotch", rate:60, bgColor: "bg-red-300", fgColor: "bg-[#af7373]", brdr:"border-[#af7373]", textColor:"text-[#af7373]"},
+            {id:"HCombMouldAvil", itemsName: "HCombMould", rate:80, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a58b02]", brdr:"border-[#a58b02]", textColor:"text-[#a58b02]"},
+            
           ]  
     },
     {

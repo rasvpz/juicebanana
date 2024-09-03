@@ -17,7 +17,10 @@ import { toDayDate } from '../utils/constsnts/constant'
 
 const View = () => {
   const [viewOrders, setViewOrders] = useState([]);
-console.log("date", toDayDate)
+  const [totalSale, setTotalSale] = useState([]);
+
+
+  
   useEffect(() => {
     const db = getDatabase(app);
     const dbRef = ref(db, "juice/orders");
@@ -38,12 +41,15 @@ console.log("date", toDayDate)
 
         if (allOrders.exists()) {
           setViewOrders(Object.values(allOrders.val()));
+          setTotalSale(viewOrders.reduce((sum, order) => sum + order.total, 0))
+
+
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     })();
-  }, []);
+  }, [viewOrders]);
 
   // Function to get the details of the selected order
   const getOrderDetails = (orderId) => {
@@ -191,81 +197,81 @@ const printTable = (orderId) => {
         />
       </div>
       <div className="relative z-10">
-        <Header />
-        <h1 className="text-xl font-bold">View Orders</h1>
+        <Header totalSale={totalSale}/>
         <div className="flex flex-wrap justify-center w-full max-w-screen-lg mx-auto gap-1">
-          {/* Display orders */}
-          {viewOrders?.map((order, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow p-2 w-1/3 max-w-xs"
-            >
+  {/* Display orders */}
+  {viewOrders?.map((order, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-lg shadow p-2 w-full max-w-xs" // Change w-1/2 to w-full
+    >
+      <table className="w-full">
+        <tbody>
+          <tr>
+            <td className="p-2 font-bold">{order.waiter}</td>
+            <td className="p-2 font-bold text-right">
+              {order.orderedTime}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* Accordion for each order */}
+      <Disclosure>
+        {({ open }) => (
+          <>
+            <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-black bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+              <span>View Orders</span>
+              <ChevronUpIcon
+                className={`${
+                  open ? "transform rotate-180" : ""
+                } w-5 h-5 text-black`}
+              />
+            </Disclosure.Button>
+            <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-600">
+              {/* Nested table for each order */}
               <table className="w-full">
-                <tbody>
+                <thead>
                   <tr>
-                    <td className="p-2 font-bold">{order.waiter}</td>
-                    <td className="p-2 font-bold" align="right">
-                      {order.orderedTime}
+                    <th className="px-4 py-2 text-left">Juice</th>
+                    <th className="px-4 py-2 text-left">Quantity</th>
+                    <th className="px-4 py-2 text-left">Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {order.orders.map((item, idx) => (
+                    <tr key={idx}>
+                      <td className="px-4 py-2">{item.juiceId}</td>
+                      <td className="px-4 py-2">{item.qty}</td>
+                      <td className="px-4 py-2 text-right">₹{item.rate}</td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td colSpan="0" className="text-left">
+                      <button
+                        onClick={() => printTable(order.id)}
+                        className="bg-red-500 p-2 text-white font-bold rounded"
+                      >
+                        PRINT
+                      </button>
+                    </td>
+                    <td className="text-right font-bold">
+                      Total
+                    </td>
+                    <td className="text-right">
+                      <h3 className="ml-2 font-bold">₹{order.total}</h3>
                     </td>
                   </tr>
                 </tbody>
               </table>
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
+    </div>
+  ))}
+</div>
 
-              {/* Accordion for each order */}
-              <Disclosure>
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-black bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                      <span>View Orders</span>
-                      <ChevronUpIcon
-                        className={`${
-                          open ? "transform rotate-180" : ""
-                        } w-5 h-5 text-black`}
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-600">
-                      {/* Nested table for each order */}
-                      <table className="w-full">
-                        <thead>
-                          <tr>
-                            <th className="px-4 py-2 text-left">Juice</th>
-                            <th className="px-4 py-2 text-left">Quantity</th>
-                            <th className="px-4 py-2 text-left">Rate</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {order.orders.map((item, idx) => (
-                            <tr key={idx}>
-                              <td className="px-4 py-2">{item.juiceId}</td>
-                              <td className="px-4 py-2">{item.qty}</td>
-                              <td className="px-4 py-2">₹{item.rate}</td>
-                            </tr>
-                          ))}
-                          <tr>
-                            <td colSpan="0" align="left">
-                              <button
-                                onClick={() => printTable(order.id)}
-                                className="bg-red-500 p-2 text-white font-bold rounded"
-                              >
-                                PRINT
-                              </button>
-                            </td>
-                            <td align="right" className="font-bold">
-                              Total
-                            </td>
-                            <td>
-                              <h3 className="ml-2 font-bold">₹{order.total}</h3>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
