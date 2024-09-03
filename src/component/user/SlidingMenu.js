@@ -72,25 +72,20 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
           <title>Print</title>
           <style>
             table {
-              width: 50%;
+              width: 100%;
               border-collapse: collapse;
             }
             th, td {
               padding: 4px;
               text-align: left;
             }
-            th {
-              background-color: #f4f4f4;
-            }
-            tbody tr:nth-child(even) {
-              background-color: #f9f9f9;
-            }
+
           </style>
         </head>
         <body>
         <table border="0">
         <tr>
-        <td><h2 align="center" text-3xl>LeBanana <small>${place}</small></h2></td>
+        <td><h3 align="center" text-3xl>LeBanana <small>${place}</small></h3></td>
                
         </tr>
         </table>
@@ -119,13 +114,14 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
                 </tr>                
               `).join('')}
               <td className="py-2 px-4 font-bold"></td>
-              <td className="py-2 px-4 font-bold"><p align="center">*** Thank you visit again ***</p></td>
+              <td className="py-2 px-4 font-bold"><p align="center"> Thank you </p></td>
               <td className="py-2 px-4 font-bold">Total</td>
               <td className="py-2 px-4 font-bold"><p align="right">${totalValue}</p></td>
               
             </tbody>
           </table>
         </body>
+        <br />
       </html>
     `;
    
