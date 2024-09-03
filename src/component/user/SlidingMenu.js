@@ -114,14 +114,14 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
                 </tr>                
               `).join('')}
               <td className="py-2 px-4 font-bold"></td>
-              <td className="py-2 px-4 font-bold"><p align="center"> Thank you </p></td>
+              <td className="py-2 px-4 font-bold"></td>
               <td className="py-2 px-4 font-bold">Total</td>
               <td className="py-2 px-4 font-bold"><p align="right">${totalValue}</p></td>
-              
+              </tr>
             </tbody>
           </table>
         </body>
-        <br />
+        <p align="center"> *** Thank you ***</p>
       </html>
     `;
    
