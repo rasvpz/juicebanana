@@ -91,8 +91,8 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
         </table>
         <table border="0" style="margin-top:-25px; margin-bottom:2px ">
         <tr>
-        <td><p align="left">Date :  ${toDayDate} </p> </td>
-        <td><p align="right">Time :  ${orderedTime}</p></td>        
+        <td><p align="left">${toDayDate} </p> </td>
+        <td><p align="right">${orderedTime}</p></td>        
         </tr>
         </table>
           <table  border="1">
