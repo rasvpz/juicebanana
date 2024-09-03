@@ -12,6 +12,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
 
   const [totalValue, setTotalValue] = useState(false);
 
+  console.log('print', noOfItems)
 
   // Function to save data to Firebase
   const saveData = async (filteredItems, noOfItems) => {
@@ -77,7 +78,6 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
             th, td {
               padding: 4px;
               text-align: left;
-              border: 1px solid #ddd;
             }
             th {
               background-color: #f4f4f4;
@@ -88,11 +88,23 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
           </style>
         </head>
         <body>
-          <table>
+        <table border="0">
+        <tr>
+        <td><h2 align="center" text-3xl>LeBanana <small>${place}</small></h2></td>
+               
+        </tr>
+        </table>
+        <table border="0" style="margin-top:-25px; margin-bottom:2px ">
+        <tr>
+        <td><p align="left">Date :  ${toDayDate} </p> </td>
+        <td><p align="right">Time :  ${orderedTime}</p></td>        
+        </tr>
+        </table>
+          <table  border="1">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Item</th>
+                <th width="75%">Item</th>
                 <th>Qty</th>
                 <th>Amnt</th>
               </tr>
@@ -102,13 +114,17 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
                 <tr>
                   <td>${idx + 1}</td>
                   <td>${key}</td>
-                  <td>${noOfItems[key]?.count || 0}</td>
-                  <td>${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</td>
-                </tr>
+                  <td><p align="right">${noOfItems[key]?.count || 0}</p></td>
+                  <td align="center"><p align="right">${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</p></td>
+                </tr>                
               `).join('')}
+              <td className="py-2 px-4 font-bold"></td>
+              <td className="py-2 px-4 font-bold"><p align="center">*** Thank you visit again ***</p></td>
+              <td className="py-2 px-4 font-bold">Total</td>
+              <td className="py-2 px-4 font-bold"><p align="right">${totalValue}</p></td>
+              
             </tbody>
           </table>
-
         </body>
       </html>
     `;
@@ -118,6 +134,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
     printWindow.document.close();
     printWindow.focus();
     printWindow.print();
+    // saveData()
   };
 
 
