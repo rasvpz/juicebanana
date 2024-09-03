@@ -173,7 +173,7 @@ const User = () => {
             {category.itemsDetails?.map((item) => (
               <div
                 key={item.id}
-                className={`bg-opacity-[.9] rounded-md p-2 m-2 w-auto lg:min-w-[200px] sm:min-w-[100px]
+                className={`bg-opacity-[.9] rounded-md p-2 m-2 w-auto lg:min-w-[200px] 
                                 ${
                                   noOfItems[item.id]?.count > 0
                                     ? "border border-[#61abfa] shadow-[0_0_20px_8px_rgba(96,165,250,1)]"
@@ -200,7 +200,7 @@ const User = () => {
                 <div className="flex justify-between items-center mt-3 mb-2">
                   <span
                     onClick={() => handleDecrement(item.id)} // Corrected: Pass only item.id
-                    className={`cursor-pointer ${item.textColor} border-2 ${item.brdr} rounded-full px-3 text-2xl`}
+                    className={`cursor-pointer ${item.textColor} border-2 ${item.brdr} rounded-full px-3 text-2xl mr-1`}
                   >
                     -
                   </span>
