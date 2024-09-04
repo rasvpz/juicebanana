@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set, push } from 'firebase/database';
+// import { getDatabase, ref, set, push } from 'firebase/database';
 import { useSelector } from 'react-redux';
 import { indianDate, toDayDate,   orderedTime } from '../../utils/constsnts/constant'
-
+import { saveData, printTable } from '../../utils/constsnts/constant';
 
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,127 +12,145 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
 
   const [totalValue, setTotalValue] = useState(false);
 
-  console.log('print', noOfItems)
 
-  // Function to save data to Firebase
-  const saveData = async (filteredItems, noOfItems) => {
-    const db = getDatabase();  
-    // const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-    // const toDayDate = indianDate?.split(',')[0]?.trim()
-    // const orderedTime = indianDate?.split(',')[1]?.trim()
-    
-    // Ensure that noOfItems is an array
-    const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);
-    
-    const orders = itemsArray?.map((data) => {
-      return {
-        category: data.categoryName || 0,
-        juiceName: data.juiceName || '',  // Juice name
-        juiceId:data.juiceId || 0,
-        qty: data.count || 0,  // Quantity
-        rate: data.rate || 0,  // Rate
-        amount: (data.count || 0) * (data.rate || 0),  // Total amount
-        cardBg: data.cardBg || '', 
-        btnBg: data.btnBg || '',
-        btnBrdr: data.btnBrdr || '',
-        updatedAt: indianDate, // Creation timestamp
-        isDeleted: false,  // Flag to indicate if the order is deleted
-        isActive: true  // Flag to indicate if the order is active
-      };
-    });
-    
-    try {
-      const newDocRef = totalValue ? push(ref(db, "juice/orders")) : '';  // Create a new entry with a unique ID
-      await set(newDocRef, {
-        id: newDocRef.key,  // Use Firebase's generated ID
-        total: totalValue,
-        waiter:waiter,
-        place: place, 
-        toDayDate:toDayDate,
-        orderedTime:orderedTime,
-        createdAt: indianDate, // The timestamp for the entire order batch
-        isDeleted: false,  // Indicates the entire order batch is not deleted
-        isActive: true,  // Indicates the order batch is active
-        orders // Store the array of order objects         
-      }).then((success) => {
-        setNoOfItems({});
-        setSuccessAlert(true);        
-      });
-    } catch (error) {
-      console.error("Error saving orders:", error.message);
-    }
-  };
+// Function to save data to Firebase
+// const saveData = async (noOfItems) => {
+//   const db = getDatabase();  
+//   const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);
+
+//   const orders = itemsArray.map((data) => ({
+//     category: data.categoryName || "",
+//     juiceName: data.juiceName || "",
+//     juiceId: data.juiceId || "",
+//     qty: data.count || 0,
+//     rate: data.rate || 0,
+//     amount: (data.count || 0) * (data.rate || 0),
+//     cardBg: data.cardBg || "",
+//     btnBg: data.btnBg || "",
+//     btnBrdr: data.btnBrdr || "",
+//     updatedAt: indianDate, 
+//     isDeleted: false,
+//     isActive: true,
+//   }));
+
+//   try {
+//     const newDocRef = totalValue ? push(ref(db, "juice/orders")) : '';  
+//     await set(newDocRef, {
+//       id: newDocRef.key,
+//       total: totalValue,
+//       waiter: waiter,
+//       place: place,
+//       toDayDate: toDayDate,
+//       orderedTime: orderedTime,
+//       createdAt: indianDate,
+//       isDeleted: false,
+//       isActive: true,
+//       orders
+//     });
+
+//     setNoOfItems({});
+//     setSuccessAlert(true);
+//   } catch (error) {
+//     console.error("Error saving orders:", error.message);
+//   }
+// };
+
+// Function to print the table
+// const printTable = async () => {
+//   // Save data to Firebase before printing
+//   await saveData(filteredItems, noOfItems);
+
+//   // Open the print window
+//   const printWindow = window.open('', '', 'height=600,width=400');
   
+//   // Create the table HTML for printing
+//   const tableHTML = `
+//     <html>
+//       <head>
+//         <title>Print</title>
+//         <style>
+//           body {
+//             font-family: Arial, sans-serif;
+//           }
+//           table {
+//             width: 100%;
+//             border-collapse: collapse;
+//           }
+//           th, td {
+//             padding: 8px;
+//             text-align: left;
+//             border: 1px solid black;
+//           }
+//           th {
+//             background-color: #f2f2f2;
+//           }
+//         </style>
+//       </head>
+//       <body>
+//         <table>
+//           <tr>
+//             <td><h3 align="center">LeBanana <small>${place}</small></h3></td>
+//           </tr>
+//         </table>
+//         <table border="0" style="margin-top:-25px; margin-bottom:2px">
+//           <tr>
+//             <td align="left">${toDayDate}</td>
+//             <td align="right">${orderedTime}</td>
+//           </tr>
+//         </table>
+//         <table>
+//           <thead>
+//             <tr>
+//               <th>No</th>
+//               <th width="75%">Item</th>
+//               <th>Qty</th>
+//               <th align="right">Amnt</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             ${filteredItems?.map((key, idx) => `
+//               <tr>
+//                 <td>${idx + 1}</td>
+//                 <td>${key}</td>
+//                 <td>${noOfItems[key]?.count || 0}</td>
+//                 <td align="right">₹${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</td>
+//               </tr>
+//             `).join('')}
+//             <tr>
+//               <td></td>
+//               <td></td>
+//               <td class="font-bold">Total</td>
+//               <td align="right" class="font-bold">₹${totalValue}</td>
+//             </tr>
+//           </tbody>
+//         </table>
+//         <p align="center">*** Thank you ***</p>
+//       </body>
+//     </html>
+//   `;
   
-  const printTable = () => {
-    const printWindow = window.open('', '', 'height=600,width=400');
-    const tableHTML = `
-      <html>
-        <head>
-          <title>Print</title>
-          <style>
-            table {
-              width: 100%;
-              border-collapse: collapse;
-            }
-            th, td {
-              padding: 4px;
-              text-align: left;
-            }
+//   // Write content to the print window and print it
+//   printWindow.document.open();
+//   printWindow.document.write(tableHTML);
+//   printWindow.document.close();
+//   printWindow.focus();
+//   printWindow.print();
+// };
 
-          </style>
-        </head>
-        <body>
-        <table border="0">
-        <tr>
-        <td><h3 align="center" text-3xl>LeBanana <small>${place}</small></h3></td>
-               
-        </tr>
-        </table>
-        <table border="0" style="margin-top:-25px; margin-bottom:2px ">
-        <tr>
-        <td><p align="left">${toDayDate} </p> </td>
-        <td><p align="right">${orderedTime}</p></td>        
-        </tr>
-        </table>
-          <table  border="1">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th width="75%">Item</th>
-                <th>Qty</th>
-                <th>Amnt</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${filteredItems?.map((key, idx) => `
-                <tr>
-                  <td>${idx + 1}</td>
-                  <td>${key}</td>
-                  <td><p align="right">${noOfItems[key]?.count || 0}</p></td>
-                  <td align="center"><p align="right">${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</p></td>
-                </tr>                
-              `).join('')}
-              <td className="py-2 px-4 font-bold"></td>
-              <td className="py-2 px-4 font-bold"></td>
-              <td className="py-2 px-4 font-bold">Total</td>
-              <td className="py-2 px-4 font-bold"><p align="right">${totalValue}</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </body>
-        <p align="center"> *** Thank you ***</p>
-      </html>
-    `;
-   
-    printWindow.document.open();
-    printWindow.document.write(tableHTML);
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.print();
-    // saveData()
-  };
+const handleSave = async () => {
+  try {
+    await saveData(filteredItems, noOfItems, totalValue, waiter, place, toDayDate, orderedTime, indianDate);
+    setNoOfItems({});
+    setSuccessAlert(true);
+  } catch (error) {
+    // Handle errors
+  }
+};
 
+const handlePrint = () => {
+  handleSave()
+  printTable(place, toDayDate, orderedTime, filteredItems, noOfItems, totalValue);
+};
 
   // Toggle the sliding menu
   const toggleMenu = () => {
@@ -191,7 +209,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
             <tr className="odd:bg-gray-700 even:bg-gray-800 hover:bg-gray-600">
               <td className="py-2 px-4">
                 <button 
-                  onClick={() => saveData(filteredItems, noOfItems, setIsOpen(false))}
+                  onClick={() => handleSave(filteredItems, noOfItems, setIsOpen(false))}
                   className='bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75'
                 >
                   SAVE
@@ -199,7 +217,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
               </td>
               <td className="py-2 px-4">
                 <button 
-                  onClick={printTable} 
+                  onClick={handlePrint} 
                   className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75'
                 >
                   PRINT/SAVE
