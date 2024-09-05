@@ -86,14 +86,14 @@ export const printTable = (place, toDayDate, orderedTime, filteredItems, noOfIte
               <tr>
                 <td>${idx + 1}</td>
                 <td>${key}</td>
-                <td align="right">${noOfItems[key]?.count || 0}</td>
-                <td align="right">${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</td>
+                <td><p align="right">${noOfItems[key]?.count || 0}</p></td>
+                <td><p align="right">${(noOfItems[key]?.count || 0) * (noOfItems[key]?.rate || 0)}</p></td>
               </tr>
             `).join('')}
             <tr>
               <td colspan="2"></td>
               <td>Total</td>
-              <td align="right">${totalValue}</td>
+              <td><p align="right">${totalValue}</p></td>
             </tr>
           </tbody>
         </table>
