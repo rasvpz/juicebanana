@@ -11,7 +11,7 @@ import Header from "./Header";
 import app from "../utils/firebase";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
-import { jsPDF } from "jspdf";
+// import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import { toDayDate } from '../utils/constsnts/constant'
 
