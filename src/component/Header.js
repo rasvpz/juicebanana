@@ -10,7 +10,6 @@ const Header = ({totalSale}) => {
   const place = user?.displayName?.split(',')[1]?.trim()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -30,14 +29,15 @@ const Header = ({totalSale}) => {
   
 
   const signoutButton = () => {
-    signOut(auth).then(() => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      signOut(auth).then(() => {
         // Sign-out successful.
-        navigate('/')
-
+        navigate('/');
       }).catch((error) => {
         // An error happened.
       });
-}
+    }
+  };
 
 const viewOrders = () => {
   if (user) { // Check if user is logged in
@@ -61,10 +61,10 @@ const viewHome = () => {
 
   return (
 <div className="flex items-center justify-between px-6 py-4 z-10">
-  <div className="flex items-center space-x-2 cursor-pointer" onClick={viewHome}>
-    <img className="rounded-full w-10 h-10 border-2 border-white" src="/logo192.png" alt="logo" />
-    <span className="text-lg font-bold text-[#ffdf27]">{totalSale ? "" : "Le Banana"}</span>
-  </div>
+<div className="flex items-center space-x-2 cursor-pointer" onClick={viewHome}>
+  <img className="rounded-full w-10 h-10 border-2 border-white" src="/logo192.png" alt="logo" />
+  <span className="text-lg font-bold text-[#ffdf27] lg:inline-block hidden sm:hidden">Le Banana</span>
+</div>
 
   <div className="ml-auto flex items-center space-x-4">
     <span className="text-white cursor-pointer mt-2 flex" onClick={viewOrders}>

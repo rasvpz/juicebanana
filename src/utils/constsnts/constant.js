@@ -48,7 +48,7 @@ export const saveData = async (filteredItems, noOfItems, totalValue, waiter, pla
   }
 };
 
-// Print table function
+
 export const printTable = (place, toDayDate, orderedTime, filteredItems, noOfItems, totalValue) => {
   const printWindow = window.open('', '', 'width=400');
   const tableHTML = `
@@ -107,3 +107,5 @@ export const printTable = (place, toDayDate, orderedTime, filteredItems, noOfIte
   printWindow.focus();
   printWindow.print();
 };
+
+

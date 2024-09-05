@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { getDatabase, ref, set, push } from 'firebase/database';
 import { useSelector } from 'react-redux';
 import { indianDate, toDayDate,   orderedTime } from '../../utils/constsnts/constant'
-import { saveData, printTable } from '../../utils/constsnts/constant';
+import { saveData } from '../../utils/constsnts/constant';
 
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -147,10 +147,10 @@ const handleSave = async () => {
   }
 };
 
-const handlePrint = () => {
-  handleSave()
-  printTable(place, toDayDate, orderedTime, filteredItems, noOfItems, totalValue);
-};
+// const handlePrint = () => {
+//   handleSave()
+//   printTable(place, toDayDate, orderedTime, filteredItems, noOfItems, totalValue);
+// };
 
   // Toggle the sliding menu
   const toggleMenu = () => {
@@ -183,12 +183,12 @@ const handlePrint = () => {
 
       {/* Sliding Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-auto bg-gray-800 text-white p-4 transform transition-transform duration-300 ease-in-out z-20
+        className={`fixed ml-8 top-0 right-0 h-full w-auto bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-20
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-xl font-semibold mb-4">Order</h2>
-        <table className="table-auto w-full border-collapse border-2 border-gray-700 text-white">
+        <h2 className="text-xl p-4 font-semibold mb-4">Current Order</h2>
+        <table className="table-auto  w-full border-collapse border-2 border-gray-700 text-white">
           <thead>
             <tr className="bg-gray-800">
               <th className="py-2 px-4 text-left">No</th>
@@ -216,12 +216,12 @@ const handlePrint = () => {
                 </button>
               </td>
               <td className="py-2 px-4">
-                <button 
+                {/* <button 
                   onClick={handlePrint} 
                   className='bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75'
                 >
                   PRINT/SAVE
-                </button>
+                </button> */}
               </td>
               <td className="py-2 px-4 font-bold">Total</td>
               <td align='right' className="py-2 px-4 font-bold">{totalValue}</td>

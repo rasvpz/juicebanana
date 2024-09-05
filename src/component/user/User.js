@@ -156,7 +156,7 @@ const User = () => {
               }`}
           >
             {totalItemsForCategory > 0 && (
-              <p className="absolute right-0 top-[-15px] text-white bg-[#14862d] border-2 textborder-[#22fc35] border-[#22fc35] rounded-full px-2 text-sm font-semibold">
+              <p className="absolute right-0 top-[-6px] text-white bg-[#14862d] border-2 textborder-[#22fc35] border-[#22fc35] rounded-full px-2 text-sm font-semibold">
                 {totalItemsForCategory}
               </p>
             )}
