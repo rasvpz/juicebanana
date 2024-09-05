@@ -29,101 +29,35 @@ const View = () => {
     (async () => {
       try {
         const query = firebaseQuery(
-        //   dbRef,
-        //   orderByChild("place"),
-        //   equalTo("Alathur")
-        dbRef,
-        orderByChild("toDayDate"),
-        equalTo(toDayDate)
+          dbRef,
+          orderByChild("toDayDate"),
+          equalTo(toDayDate)
         );
 
         const allOrders = await get(query);
 
         if (allOrders.exists()) {
-          setViewOrders(Object.values(allOrders.val()));
-          setTotalSale(viewOrders.reduce((sum, order) => sum + order.total, 0))
+          const ordersArray = Object.values(allOrders.val());
 
+          // Calculate total sales before updating the state
+          const total = ordersArray.reduce((sum, order) => sum + order.total, 0);
 
+          setViewOrders(ordersArray); // Update the orders
+          setTotalSale(total); // Update the total sales
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     })();
-  }, [viewOrders]);
+  }, []);
 
   // Function to get the details of the selected order
   const getOrderDetails = (orderId) => {
     return viewOrders?.find((order) => order.id === orderId);
   };
 
-  // Function to handle print
-//   const printTable = (orderId) => {
-//     const order = getOrderDetails(orderId);
-//     const printWindow = window.open("", "", "height=600,width=400");
 
-//     if (printWindow && order) {
-//       printWindow.document.open();
-//       printWindow.document.write(`
-//         <html>
-//           <head>
-//             <title>Print Order</title>
-//             <style>
-//               table { width: 100%; border-collapse: collapse; }
-//               th, td { padding: 8px; border: 1px solid #ddd; }
-//               th { background-color: #f4f4f4; }
-//               body { font-family: Arial, sans-serif; }
-//             </style>
-//           </head>
-//           <body>
-//             <h3 align="center">LeBanana ${order.place}</h3>
-//             <table>
-//               <tr>
-//                 <td class="p-2 font-bold">Date : ${order.toDayDate}</td>
-//                 <td class="p-2 font-bold" align='right'>Time : ${
-//                   order.orderedTime
-//                 }</td>
-//               </tr>
-//               <tr>
-//                 <td colspan="3">
-//                   <table>
-//                     <thead>
-//                       <tr>
-//                         <th>Juice</th>
-//                         <th>Quantity</th>
-//                         <th>Rate</th>
-//                       </tr>
-//                     </thead>
-//                     <tbody>
-//                       ${order.orders
-//                         .map(
-//                           (item) => `
-//                         <tr>
-//                           <td>${item.juiceId}</td>
-//                           <td align="right">${item.qty}</td>
-//                           <td>₹${item.rate}</td>
-//                         </tr>
-//                       `
-//                         )
-//                         .join("")}
-//                       <tr>
-//                         <td align='right' colspan="2">Total</td>
-//                         <td>₹${order.total}</td>
-//                       </tr>
-//                     </tbody>
-//                   </table>
-//                 </td>
-//               </tr>
-//             </table>
-//             <p align="center">Thank You  Visit Agan</p>
-
-//             <script>window.print(); window.close();</script>
-//           </body>
-//         </html>
-//       `);
-//       printWindow.document.close();
-//     }
-//   };
-const printTable = (orderId) => {
+  const printTable = (orderId) => {
     const order = getOrderDetails(orderId);
   
     if (order) {
@@ -134,7 +68,7 @@ const printTable = (orderId) => {
       const titleMarginBottom = 20;
       const dateTimeMarginBottom = 10;
   
-      // Add title
+      // Add title (Centered)
       doc.setFontSize(40);
       const titleY = 15;
       doc.text(`LeBanana ${order.place}`, doc.internal.pageSize.getWidth() / 2, titleY, { align: "center" });
@@ -144,13 +78,24 @@ const printTable = (orderId) => {
   
       // Add Date and Time
       doc.setFontSize(32);
-      doc.text(`Date: ${order.toDayDate}`, 15, dateTimeY); // Adjusted Y position for Date
-      doc.text(`Time: ${order.orderedTime}`, doc.internal.pageSize.getWidth() - 15, dateTimeY, { align: "right" }); // Adjusted Y position for Time
+      const pageWidth = doc.internal.pageSize.getWidth();
+  
+      // Left-aligned date
+      doc.text(`Date: ${order.toDayDate}`, 15, dateTimeY);
+  
+      // Right-aligned time (manually calculate position)
+      const timeText = `Time: ${order.orderedTime}`;
+      const timeTextWidth = doc.getTextWidth(timeText);
+      doc.text(timeText, pageWidth - timeTextWidth - 15, dateTimeY);
   
       // Add table with increased font size for the header and body
       doc.autoTable({
         head: [["Juices", "Qty", "Amnt"]],
-        body: order.orders.map(item => [item.juiceId, { content: item.qty, align: 'right' }, { content: `${item.amount}`, align: 'right' }]),
+        body: order?.orders?.map(item => [
+          item.juiceId,
+          { content: item.qty, styles: { halign: 'right' } }, // Right-align Qty
+          { content: `${item.amount}`, styles: { halign: 'right' } }, // Right-align Amount
+        ]),
         headStyles: {
           fillColor: [255, 255, 255], // White background for the header
           textColor: [0, 0, 0], // Black text for the header
@@ -171,13 +116,15 @@ const printTable = (orderId) => {
         margin: { top: dateTimeY + dateTimeMarginBottom }, // Adding top margin to ensure the table does not overlap with the date and time
       });
   
-      // Add total (Adjust Y position to be after the table)
+      // Add total (Right-aligned manually)
       const finalY = doc.lastAutoTable.finalY; // Get the final Y position after the table
       doc.setFontSize(32);
-      doc.text(`Total: Rs ${order.total}`, doc.internal.pageSize.getWidth() - 30, finalY + 15, { align: "right" });
+      const totalText = `Total    ${order.total}`;
+      const totalTextWidth = doc.getTextWidth(totalText);
+      doc.text(totalText, pageWidth - totalTextWidth - 18, finalY + 15);
   
-      // Add a thank you note
-      doc.text("*** Thank You Visit Again ***", doc.internal.pageSize.getWidth() / 2, finalY + 35, { align: "center" });
+      // Add a thank you note (Centered)
+      doc.text("*** Thank You Visit Again ***", pageWidth / 2, finalY + 35, { align: "center" });
   
       // Save the PDF
       doc.save(`Order_${orderId}.pdf`);
