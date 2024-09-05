@@ -50,7 +50,7 @@ export const saveData = async (filteredItems, noOfItems, totalValue, waiter, pla
 
 // Print table function
 export const printTable = (place, toDayDate, orderedTime, filteredItems, noOfItems, totalValue) => {
-  const printWindow = window.open('', '', 'height=600,width=400');
+  const printWindow = window.open('', '', 'width=400');
   const tableHTML = `
     <html>
       <head>
@@ -63,7 +63,7 @@ export const printTable = (place, toDayDate, orderedTime, filteredItems, noOfIte
       <body>
         <table border="0">
           <tr>
-            <td><h3 align="center" text-3xl>LeBanana <small>${place}</small></h3></td>
+            <td><h2 align="center" text-3xl>LeBanana <small>${place}</small></h2></td>
           </tr>
         </table>
         <table border="0" style="margin-top:-25px; margin-bottom:2px">
