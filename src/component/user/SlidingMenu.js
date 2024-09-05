@@ -183,12 +183,12 @@ const handleSave = async () => {
 
       {/* Sliding Menu */}
       <div
-        className={`fixed ml-16 top-0 right-0 h-full w-auto bg-gray-800 text-white p-4 transform transition-transform duration-300 ease-in-out z-20
+        className={`fixed ml-8 top-0 right-0 h-full w-auto bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-20
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-xl font-semibold mb-4">Current Order</h2>
-        <table className="table-auto p-80  w-full border-collapse border-2 border-gray-700 text-white">
+        <h2 className="text-xl p-4 font-semibold mb-4">Current Order</h2>
+        <table className="table-auto  w-full border-collapse border-2 border-gray-700 text-white">
           <thead>
             <tr className="bg-gray-800">
               <th className="py-2 px-4 text-left">No</th>
