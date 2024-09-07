@@ -43,7 +43,7 @@ export const categories = [
             {id:"SpanishDelightAvil", itemsName: "SpanishDelight", rate:75, bgColor: "bg-[#DC143C]", fgColor: "bg-[#a10e2b]", brdr:"border-[#a10e2b]", textColor:"text-[#a10e2b]"},
             {id:"ButterSchotchAvil", itemsName: "ButterSchotch", rate:60, bgColor: "bg-red-300", fgColor: "bg-[#af7373]", brdr:"border-[#af7373]", textColor:"text-[#af7373]"},
             {id:"HCombMouldAvil", itemsName: "HCombMould", rate:80, bgColor: "bg-[#FFD700]", fgColor: "bg-[#a58b02]", brdr:"border-[#a58b02]", textColor:"text-[#a58b02]"},
-            
+            {id:"LeBananadAvil", itemsName: "LeBananaSp", rate:140, bgColor: "bg-[#a88e02]", fgColor: "bg-[#e0be04]", brdr:"border-[#e0be04]", textColor:"text-[#e0be04]"},            
           ]  
     },
     {
@@ -75,7 +75,7 @@ export const categories = [
             { id:"FiveStarShake", itemsName: "FiveStar", rate:70, bgColor: "bg-red-300", fgColor: "bg-red-700" },
             { id:"CadberryShake", itemsName: "Cadberry", rate:70, bgColor: "bg-orange-500", fgColor: "bg-orange-700" },
             { id:"KitkatChocoShake", itemsName: "KitkatChocolate", rate:70, bgColor: "bg-pink-500", fgColor: "bg-pink-700" },
-            { id:"BelgiumChocoShake", itemsName: "BelgiumChocolate", rate:700, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
+            { id:"BelgiumChocoShake", itemsName: "BelgiumChocolate", rate:70, bgColor: "bg-[#6f4747]", fgColor: "bg-[#6f4747]" },
             { id:"DarkFantasyShake", itemsName: "DarkFantasy", rate:90, bgColor: "bg-yellow-500", fgColor: "bg-yellow-700" },
             { id:"NutellaShakes", itemsName: "NutellaShakes", rate:10, bgColor: "bg-red-500", fgColor: "bg-red-700" },
           ]
