@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { getDatabase, ref, set, push } from 'firebase/database';
 import { useSelector } from 'react-redux';
-import { indianDate, toDayDate,   orderedTime } from '../../utils/constsnts/constant'
 import { saveData } from '../../utils/constsnts/constant';
 
 const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }) => {
@@ -139,7 +138,7 @@ const SlidingMenu = ({ filteredItems, noOfItems, setNoOfItems, setSuccessAlert }
 
 const handleSave = async () => {
   try {
-    await saveData(filteredItems, noOfItems, totalValue, waiter, place, toDayDate, orderedTime, indianDate);
+    await saveData(noOfItems, totalValue, waiter, place);
     setNoOfItems({});
     setSuccessAlert(true);
   } catch (error) {

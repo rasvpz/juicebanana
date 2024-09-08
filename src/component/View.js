@@ -13,7 +13,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-import { toDayDate } from '../utils/constsnts/constant'
+// import { toDayDate } from '../utils/constsnts/constant'
 import { PencilIcon, TrashIcon  } from '@heroicons/react/24/outline';
 const View = () => {
   const [viewOrders, setViewOrders] = useState([]);
@@ -22,6 +22,9 @@ const View = () => {
 
   
   useEffect(() => {
+  const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  const toDayDate = indianDate?.split(',')[0]?.trim();
+
     const db = getDatabase(app);
     const dbRef = ref(db, "juice/orders");
 
@@ -44,6 +47,7 @@ const View = () => {
 
           setViewOrders(ordersArray); // Update the orders
           setTotalSale(total); // Update the total sales
+          console.log("hi")
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -53,13 +57,11 @@ const View = () => {
 
   // Function to get the details of the selected order
   const getOrderDetailsForPrintAndUpdate = (orderId) => {
-    console.log("_id", orderId);
     return viewOrders?.find((order) => order.id === orderId);
   };
 
   const printTable = (orderId) => {
     const order = getOrderDetailsForPrintAndUpdate(orderId);
-  console.log("Order", order)
     if (order) {
       // Create a new instance of jsPDF
       const doc = new jsPDF();

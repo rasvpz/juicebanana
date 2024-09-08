@@ -1,14 +1,19 @@
 import { getDatabase, ref, push, set } from "firebase/database";
 
-export const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-export const toDayDate = indianDate?.split(',')[0]?.trim()
-export const orderedTime = indianDate?.split(',')[1]?.trim()
+const getIndianDateTime = () => {
+  const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  const toDayDate = indianDate?.split(',')[0]?.trim();
+  const orderedTime = indianDate?.split(',')[1]?.trim();
+  return { indianDate, toDayDate, orderedTime };
+};
 
 
 // orderUtils.js
 
 // Save data to Firebase
-export const saveData = async (filteredItems, noOfItems, totalValue, waiter, place, toDayDate, orderedTime, indianDate) => {
+export const saveData = async (noOfItems, totalValue, waiter, place) => {
+
+  const { indianDate, toDayDate, orderedTime } = getIndianDateTime();
   const db = getDatabase();
   const itemsArray = Array.isArray(noOfItems) ? noOfItems : Object.values(noOfItems);
 
