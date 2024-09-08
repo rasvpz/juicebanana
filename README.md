@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+1. Userne Delete cheyyanam isActive and isdeleted
+lebanana@gmail.com
+Lebanana123abc?
+
+demo@gmail.com
+Demo123abc?
+
+https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app/:null
+
+https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app/

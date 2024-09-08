@@ -1,9 +1,14 @@
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Body from './component/Body';
 
 function App() {
   return (
-    <div>
-      <h1>My CI/CD App</h1>
-    </div>
+
+      <Provider store={appStore}> 
+      <Body /> 
+      </Provider>
+
   );
 }
 

@@ -1,14 +1,12 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA14aq2pHCkuZZ8N4bD4MzrKQtF9NluJ5A",
   authDomain: "juicebanana.firebaseapp.com",
+  databaseURL: "https://juicebanana-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "juicebanana",
   storageBucket: "juicebanana.appspot.com",
   messagingSenderId: "148297074945",
@@ -18,6 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-// export const auth = getAuth();
-// npm ci && npm run build
+// Removed the unused analytics variable
+export const auth = getAuth(app); // Added app as an argument
+export default app
+
+
