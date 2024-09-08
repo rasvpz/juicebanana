@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { categories } from "../../utils/menu/categories";
 import SlidingMenu from "./SlidingMenu";
 import CanseAllOrders from "./CanseAllOrders";
+import Header from "../Header";
 
 const User = () => {
   const [cateName, setCateName] = useState("Avil Milk");
@@ -102,6 +103,7 @@ const User = () => {
 
   return (
     <div className="ml-3">
+     <Header />
       {successAlert ? (
         <div
           className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-500 ${
