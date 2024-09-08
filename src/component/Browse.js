@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header'
+// import Header from './Header'
 import { useSelector } from 'react-redux'
 import Admin from "./admin/Admin";
 import User from "./user/User";
@@ -16,7 +16,7 @@ const Browse = () => {
         />
       </div>
       <div className="relative z-10">
-      <Header />
+      {/* <Header /> */}
         {
           user?.displayName === "admin" 
           ? <Admin />
