@@ -1,6 +1,6 @@
 import { getDatabase, ref, push, set } from "firebase/database";
 
-const getIndianDateTime = () => {
+export const getIndianDateTime = () => {
   const indianDate = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
   const toDayDate = indianDate?.split(',')[0]?.trim();
   const orderedTime = indianDate?.split(',')[1]?.trim();
